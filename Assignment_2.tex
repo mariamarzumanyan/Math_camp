@@ -1,0 +1,191 @@
+
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{graphicx,epsfig, wrapfig}
+\usepackage{amssymb}
+\usepackage{setspace}
+\usepackage{amsthm}
+\usepackage{subfig}
+\usepackage{amsmath}
+%\usepackage{chicago}
+\usepackage{natbib}
+\usepackage{enumerate}
+\usepackage{url}
+\usepackage{epstopdf}
+\usepackage{fancyhdr}
+\usepackage{threeparttable}
+\usepackage{caption}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{array}
+\usepackage{multirow}
+%\usepackage[T1]{fontenc}
+%\usepackage[utf8]{inputenc}
+%\usepackage{authblk}
+\newcommand{\keyword}[1]{\textsf{\slshape #1}}
+
+ 
+\setcounter{MaxMatrixCols}{10}    
+
+%\setstretch{3}
+\onehalfspacing
+%\setlength{\footnotesep}{0.5cm}
+%\doublespacing
+\newtheorem{theorem}{Theorem}   
+\newtheorem{acknowledgment}[theorem]{Acknowledgment}   
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case} 
+\newtheorem{claim}[theorem]{Claim} 
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{ques}[theorem]{Question}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary} 
+\setlength{\oddsidemargin}{0mm}
+\setlength{\textwidth}{6.5in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{0in}
+\setlength{\headsep}{0in}
+\setlength{\textheight}{9in}
+
+
+\newtheorem{prop}{Proposition}
+ 
+
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+
+\newcounter{saveenumi}
+\newcommand{\seti}{\setcounter{saveenumi}{\value{enumi}}}
+\newcommand{\conti}{\setcounter{enumi}{\value{saveenumi}}}
+
+\begin{document}
+
+
+\setcounter{footnote}{0}
+\title{Mathematics for Economics PhD: Assignment \rom{2}}
+\author{\textsc{Mariam Arzumanyan,}\thanks {   E-mail: mariama2@illinois.edu.} \\ } 
+
+
+\date{August 17, 2021}
+
+
+\maketitle 
+
+
+\begin{ques}
+Let $\vec{u}=(1,2)$, $\vec{v}=(0,1)$, $\vec{w}=(1,-3)$, $\vec{x}=(1,2,0)$ and $\vec{z}=(0,1,1)$.
+Compute the following vectors whenever they are defined: $\vec{u}+\vec{v}$, $-4\vec{w}$, $\vec{u}
++\vec{z}$, $3\vec{z}$, $2\vec{v}$, $\vec{u}+2\vec{v}$, $\vec{u}-\vec{v}$, $3\vec{x}+\vec{z}$, $-2\vec{x}$, $\vec{w}+2\vec{x}$.
+
+\end{ques}
+
+
+
+\newpage
+
+\begin{ques}
+Suppose that there are two consumption goods: $x$ and $y$. Suppose the price of good $x$ is $p_x$, and the price of good $y$ is $p_y$. The wealth level is $w$. 
+\begin{enumerate}
+    \item Draw the budget line and budget set on $\mathbb{R}_+^2$. 
+    \item Show that the budget set is convex. 
+    \item Now suppose that there is a discounting on good $x$. If a consumer buys more than 25 units of good x, then its price drops by $\$1$, i.e., the new price of good $x$ becomes $p_x-1$. Draw the budget line and budget set on $\mathbb{R}_+^2$.
+    \item Now suppose instead of price discount, a consumer gets a free product. If consumer buys more than 10 units, then she gets an extra unit of good x, i.e., she pays the total of $p_xx$ but gets $x+1$ units of good $x$.  Draw the budget line and budget set on $\mathbb{R}_+^2$.
+    \item Are the budget sets in part 3 and 4 still convex? Prove it or show counter example. 
+\end{enumerate}
+\end{ques}
+
+
+\newpage
+\begin{ques}
+\begin{enumerate}
+    \item Find the length of the following vectors: 
+    \par
+    $(3, 4)$, $(1,1,1)$, $(-1,-1)$, $(3,0,0,0,0)$.
+    \item Find the distance from $P$ to $Q$: 
+    \begin{enumerate}[(a)]
+        \item P(0,0), Q(3, -4);
+        \item P(1,-1), Q(7,7);
+        \item P(1,2,3,4), Q(1,0,-1,0).
+    \end{enumerate}
+    
+\end{enumerate}
+\end{ques}
+
+
+\newpage
+\begin{ques}
+
+Are the following vectors linearly independent?
+\begin{enumerate}
+    \item (2,1), (1,2).
+    \item (2,1), (-4, -2).
+    \item (1,1,0), (0,1,1).
+    \item (1,1,0), (0,1,1), (1,0,1).
+\end{enumerate}
+\end{ques}
+
+
+\newpage
+\begin{ques}
+For each of the following subsets of the plane  $\mathbb{R}^2$, draw the set, state whether it is open, closed or neither. 
+\begin{enumerate}
+    \item $\{(x,y): -1<x<1, y=0\}$.
+    \item $\{(x,y): x \text{ and } y \text{ are integers}\}$.
+    \item $\{(x,y): x+y=1\}$.
+    \item $\{(x,y): x+y<1\}$.
+   \item $\{(x,y): x=0,\text{ or } y=0\}$.
+\end{enumerate}
+\end{ques}
+
+
+\newpage
+\begin{ques}
+For each of the following functions, write $h$ as a composition of two functions $f$ and $g$:
+\begin{enumerate}
+    \item $h(x)=\log (x^2+1);$
+    \item $h(x)=(\sin x)^2$;
+    \item $h(x)=(\cos x^3, \sin x^3)$;
+    \item $h(x,y)=(x^2y)^3+x^2y$.
+    
+\end{enumerate}
+
+Take the derivatives of $h$ using the chain rule. 
+\end{ques}
+
+
+\newpage
+\begin{ques}
+Let $f(x,y)=3xy^2+2x$ where $x(t)=-3t^2$ and $y(t)=4t^3+t$. 
+\begin{enumerate}
+    \item Use the Chain Rule to find a general expression for the rate of change of the composite $f(x(t), y(t))$ with respect to $t$.
+    \item Use substitution and direct differentiation to compute the rate of change of the composite $f(x(t), y(t))$ with respect to $t$. Compare this answers with your answer to part 1.
+    \item Calculate $\frac{dz}{dt}$ at $t=0$ if 
+    \[z=\frac{5t^2+3xy}{2w^2y}, x=t^2+1, y=\sqrt{t^2+1}, \text{ and } w=e^t+1.
+    \]
+\end{enumerate}
+\end{ques}
+
+
+\newpage
+\begin{ques}
+Prove that the expression $x^2-xy^3+y^5=17$ is an implicit function of $y$ in terms of $x$ in  a neighborhood of $(x,y)=(5,2)$.
+Estimate the value of $y$ which corresponds to $x=4.8$.
+\end{ques}
+
+
+
+\end{document}
