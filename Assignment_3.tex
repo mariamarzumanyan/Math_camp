@@ -1,0 +1,258 @@
+
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{graphicx,epsfig, wrapfig}
+\usepackage{amssymb}
+\usepackage{setspace}
+\usepackage{amsthm}
+\usepackage{subfig}
+\usepackage{amsmath}
+%\usepackage{chicago}
+\usepackage{natbib}
+\usepackage{enumerate}
+\usepackage{url}
+\usepackage{epstopdf}
+\usepackage{fancyhdr}
+\usepackage{threeparttable}
+\usepackage{caption}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{array}
+\usepackage{multirow}
+%\usepackage[T1]{fontenc}
+%\usepackage[utf8]{inputenc}
+%\usepackage{authblk}
+\newcommand{\keyword}[1]{\textsf{\slshape #1}}
+
+ 
+\setcounter{MaxMatrixCols}{10}    
+
+%\setstretch{3}
+\onehalfspacing
+%\setlength{\footnotesep}{0.5cm}
+%\doublespacing
+\newtheorem{theorem}{Theorem}   
+\newtheorem{acknowledgment}[theorem]{Acknowledgment}   
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case} 
+\newtheorem{claim}[theorem]{Claim} 
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{ques}[theorem]{Question}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary} 
+\setlength{\oddsidemargin}{0mm}
+\setlength{\textwidth}{6.5in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{0in}
+\setlength{\headsep}{0in}
+\setlength{\textheight}{9in}
+
+
+\newtheorem{prop}{Proposition}
+ 
+
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+
+\newcounter{saveenumi}
+\newcommand{\seti}{\setcounter{saveenumi}{\value{enumi}}}
+\newcommand{\conti}{\setcounter{enumi}{\value{saveenumi}}}
+
+\begin{document}
+
+
+\setcounter{footnote}{0}
+\title{Mathematics for Economics PhD: Assignment \rom{3}}
+\author{\textsc{Mariam Arzumanyan,}\thanks {   E-mail: mariama2@illinois.edu.} \\ } 
+
+
+\date{August 18, 2021}
+
+
+\maketitle 
+
+
+\begin{ques}
+Which of the following functions are homogeneous? What are the degrees of homogeneity of the homogeneous ones?
+\begin{enumerate}
+    \item $3x^5y+2x^2y^4-3x^3y^3$,
+    \item $3x^5y+2x^2y^4-3x^3y^4$,
+    \item $x^{\frac{1}{2}}y^{-\frac{1}{2}}+3xy^{-1}+7$,
+    \item $x^{\frac{3}{4}}y^{\frac{1}{4}}+6x$,
+    \item $x^{\frac{3}{4}}y^{\frac{1}{4}}+6x+4$,
+    \item $\frac{x^2-y^2}{x^2+y^2}+3$.
+\end{enumerate}
+\end{ques}
+
+\newpage
+\begin{ques}
+Consider the constant elasticity of substitution (CES) production function
+\[F(x_1, x_2)=A(a_1x_1^\rho+a_2x_2^\rho)^\frac{1}{\rho}.
+\]
+Show that $F$ has constant returns to scale. 
+\end{ques}
+
+\newpage
+\begin{ques}
+Which of the following functions are homothetic?
+\begin{enumerate}
+    \item $e^{x^2y}e^{xy^2}$,
+    \item $4 \log x +3\log y$,
+    \item $x^3y^6+3x^2y^4+6xy^2+9$,
+    \item $x^2y+xy$,
+    \item $\frac{x^2y^2}{xy+1}$.
+   % \item 
+\end{enumerate}
+\end{ques}
+
+
+
+\newpage
+\begin{ques}
+Consider the general Cobb-Douglas function on $\mathbb{R}_+^2$: 
+\[u(x,y)=x^ay^b, a>0, b>0.
+\]
+Is it a convex function? Is it a concave function? Is  it quasiconcave/quasiconvex?
+
+\end{ques}
+
+
+\newpage
+\begin{ques}
+Which of the following functions on $\mathbb{R}^n$ are concave or convex?
+\begin{enumerate}
+    \item $f(x)=3e^x+5x^4-\ln x$,
+    \item $f(x,y)=-3x^2+2xy-y^2+3x-4y+1$,
+    \item $f(x,y,z)=3e^x+5y^4-\ln z$,
+    \item $f(x,y,z)=Ax^ay^bz^c$, for $a,b,c>0$.
+\end{enumerate}
+\end{ques}
+
+
+\newpage
+\begin{ques}
+Which of the following functions on $\mathbb{R}$ are quasiconcave or quasiconvex?
+\begin{enumerate}
+    \item $f(x)=e^x$,
+    \item $f(x)=\ln x$,
+    \item $f(x)=x^3+x$,
+    \item $f(x)=x^3-x$,
+    \item $f(x)=x^4-x^2$,
+    \item $f(x)=x^4+x^2$,
+    \item $f(x)=3x^3-5x^2+7x$,
+    \item $f(x)=\sin x$.
+\end{enumerate}
+
+\end{ques}
+
+\newpage
+\begin{ques}
+Which of the following functions on $\mathbb{R}^n$ are quasiconcave or quasiconvex?
+\begin{enumerate}
+    \item $f(x,y)=ye^{-x}$ on $\mathbb{R}_+^2$.
+    \item $f(x,y)=(2x+3y)^3$ on $\mathbb{R}^2$.
+    \item $f(x,y)=\frac{y}{x^2+1}$ on $\mathbb{R}_+^2$.
+    \item $f(x,y)=yx^{-2}$ on $\mathbb{R}_+^2$.
+\end{enumerate}
+\end{ques}
+
+
+\newpage
+\begin{ques}
+Find the local maxs and mins of $f(x,y)=x^3-y^3+9xy$.
+\end{ques}
+
+\newpage
+\begin{ques}
+For each of the following functions defined on $\mathbb{R}^2$, find the critical points and classify these as local max, local min, saddle point, global max, global min, or "can't tell".
+\begin{enumerate}
+    \item $x^4+x^2-6xy+3y^2$,
+    \item $x^2-6xy+2y^2+10x+2y-5$,
+    \item $xy^2+x^3y-xy$,
+    \item $3x^4+3x^2y-y^3$.
+    
+\end{enumerate}
+\end{ques}
+
+
+\newpage
+\begin{ques}
+Find the maximum and minimum distance from the origin to the ellipse $x^2+xy+y^2=3$. [Hint: Use $x^2+y^2$ as your objective function.]
+\end{ques}
+\newpage
+\begin{ques}
+Solve a utility maximization problem on $\mathbb{R}_+^2$:
+\[\max_{x,y} u(x,y)=xy
+\]
+subject to 
+\[2x+3y=18.\]
+\[x\geq 0, y\geq 0
+\]
+\end{ques}
+
+\newpage
+
+\begin{ques}
+Solve a utility maximization problem on $\mathbb{R}\times (0,\infty)$:
+\[\max_{x,y} u(x,y)=x+\ln y.
+\]
+subject to 
+\[p_xx+p_yy\leq w.\]
+\end{ques}
+
+\newpage
+\begin{ques}
+Find the general expression for the commodity bundle $(x_1, x_2)$ which maximizes the Cobb-Douglas utility function $u(x,y)=x^\alpha y^\beta$ on the budget set $p_xx+p_yy\leq w$, $x_1\geq 0$, $x_2\geq 0$.
+\end{ques}
+
+
+
+\newpage
+\begin{ques}
+Solve a utility maximization problem on $\mathbb{R}_+^2$:
+\[\max_{x,y} u(x,y)=\min \{x,y\}.
+\]
+subject to 
+\[p_xx+p_yy\leq w.\]
+\end{ques}
+\newpage
+\begin{ques}
+Solve a utility maximization problem on $\mathbb{R}_+^2$:
+\[\max_{x,y} u(x,y)=\max \{x,y\}.
+\]
+subject to 
+\[p_xx+p_yy\leq w.\]
+\end{ques}
+\newpage
+\begin{ques}
+Solve a utility maximization problem on $\mathbb{R}_+^2$:
+\[\max_{x,y} u(x,y)=x+y.
+\]
+subject to 
+\[p_xx+p_yy\leq w.\]
+\end{ques}
+
+
+
+\newpage
+\begin{ques}
+Example 18.5 Textbook.
+\[\max_{x,y} f(x,y)=x^2y
+\]
+subject to $$2x^2+y^2=3$$.
+\end{ques}
+\end{document}
