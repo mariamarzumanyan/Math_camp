@@ -6,21 +6,21 @@ This material covers a selection of topics from mathematical analysis, linear al
 multivariable calculus, integration, optimization theory, differential, and difference equations. 
 
 # Lecture 1 
-Logic and Proofs Methods
+Logic and Proofs Methods,
 Matrix Algebra
 
 # Lecture 2
-Topics in Mathematical Analysis
+Topics in Mathematical Analysis,
 Functions and Correspondences
 
 # Lecture 3
-Unconstrained Optimization
+Unconstrained Optimization,
 Constrained Optimization
 
 # Lecture 4
-Differential Equations
+Differential Equations,
 Difference Equations
 
 # Lecture 5
-Dynamic Programing
+Dynamic Programing,
 Introduction to Python's Numpy and Pandas Libraries
