@@ -1,0 +1,1268 @@
+\documentclass{beamer}
+
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+\usetheme{Boadilla}
+%\usetheme{boxes}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{default}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+%\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+\usepackage{epsfig}
+
+\usepackage{amssymb, graphicx, amsmath, amsthm}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{calc}
+
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+\setbeamercovered{highly dynamic}
+\newcounter{saveenumi}
+\newcommand{\seti}{\setcounter{saveenumi}{\value{enumi}}}
+\newcommand{\conti}{\setcounter{enumi}{\value{saveenumi}}}
+
+\title{\textsc{Mathematics for Economics PhD}}
+
+
+\subtitle{Lecture 1} 
+\author{Instructor:  Mariam Arzumanyan}
+
+
+\date[UIUC, Fall 2021]{University of Illinois at Urbana-Champaign \\August 16, 2021 }
+
+
+\subject{Lecture Session}
+
+\AtBeginSubsection[]
+{
+  \begin{frame}<beamer>{Outline}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+\pgfdeclareimage[height=0.7cm]{Illinilogo}{Illinilogo.png}
+\logo{\pgfuseimage{Illinilogo}} 
+% Let's get started
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
+\setbeamercovered{invisible}
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\begin{frame}{Class Information}
+\begin{itemize}
+  
+    \item \textbf{Phone:} **
+    \item \textbf{Email:} **
+\item \textbf{Office Hours:}  1:30 - 2:30 pm  by appointment
+\item \textbf{Zoom: } **
+\item \textbf{During Class:} Please have your Video on and Sound muted. 
+
+\end{itemize}
+
+\end{frame}
+\begin{frame}{References}
+	\begin{itemize}
+
+\item	\textbf{Simon, Blume, Mathematics for Economists \textit{W.W.Norton, 1994}}
+\item	Mas-Colell, Whinston, Green, Microeconomic Theory: Mathematical Appendix \textit{Oxford University Press,  1995 }
+\item		Sydsater, Hammond, Seierstad, and Strom, (2008). Further mathematics for economic analysis. Pearson education. Financial Times/Prentice Hall, second edition.
+\item		Stokey, Lucas, Prescott, (1989). Recursive Methods in Economics Dynamic, Harvard University Press.
+
+ \end{itemize}   
+\end{frame}
+
+
+
+
+
+
+
+\begin{frame}{Goal of the Course}
+\begin{itemize}
+\item To cover a selection of topics from mathematical analysis, linear algebra, multivariable calculus, integration, optimization theory, differential and difference equations. 
+\item To introduce students to the tools to set up and solve strategic interaction problems.
+\item To introduce  different sets of concepts and applications in first year Economics PhD  classes.
+\end{itemize}
+\end{frame}
+\section{Logic}
+
+
+
+
+\begin{frame}{Logic}
+\begin{block}{Statements}
+    A \textit{statement} is a sentence that, as it stands, is either true or false. 
+\end{block}
+In mathematics, a \textit{statement} might involve variables, and thus whether it's true or false might depend on certain values that variables can assume. 
+Examples:
+\begin{itemize}
+    \item "1$\leq$ 2" is a true statement. 
+    \item "3+2=4" is a false statement. 
+    \item "$x<4$" depends on the value of variable x. 
+    \item "$x<y$" depends on the values of two variables: x and y. 
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Logic}
+    \begin{block}{Quantifiers}
+    \textit{Quantifiers} specify conditions for which statements are true or false. 
+    \end{block}
+    The most common \textit{quantifiers} used in mathematics are the following:
+    \begin{itemize}
+        \item The symbol "$\exists$", which stands for "there exists".
+        \item The symbol "$\forall$", which stands for "for all". 
+    \end{itemize}
+   \textbf{Examples: }
+   Let $N$ be the set of natural numbers, that is: $N=\{1,2,3,4,...\}$.
+   \begin{itemize}
+       \item "$\exists x \in N$ such that $x<4$" is a true statement since it's true for x equals 1,2, and 3. 
+       \item "$\forall x \in N$, $x<4$" is a false statement, why?
+       \item "$\forall x$, $\exists y$ such that $x<y$" is a true statement. 
+       \item "$\exists x $ such that $\forall y, $ $x<y$" is a false statement.
+   \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Logic}
+    \begin{block}{Connectives}
+    Suppose we have statements P and Q. We can combine them with connectives \textit{and, or, not, implies, if and only if}. 
+    \begin{enumerate}
+        \item \textbf{and, $\land$}: $P\land Q $ (P and Q) is true only when P and Q are both true. 
+        \item \textbf{or, $\lor$}: $P\lor Q $ (P or Q) is true if one or the other or both P and Q is true. 
+        \item \textbf{not, $\neg$}: $\neg P $ (Not P or negation of P) has the opposite truth value from P. 
+        \item \textbf{implies, $\Rightarrow$}: $P \Rightarrow Q$ (P implies Q, if P then Q, P causes Q, P is sufficient for Q, Q is necessary for P) is true unless P is true and Q is false. 
+        \item \textbf{if and only if, $\iff$}: $P\iff Q$ (P if and only if Q) is true when P and Q are both true or both false but is false otherwise. 
+    \end{enumerate}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Connectives}
+    \includegraphics[scale=0.6]{connectives_1.PNG}
+\end{frame}
+
+
+\begin{frame}{Connectives}
+    \includegraphics[scale=0.55]{connectives_2.PNG}
+\end{frame}
+\begin{frame}{Connectives}
+\textbf{Note:} Consider statement $P \Rightarrow Q$. We call statement $Q \Rightarrow P$ its \textit{converse}, and the statement $\neg P \Rightarrow \neg Q$ its \textit{inverse.} We call $\neg Q \Rightarrow \neg P$ its \textit{counterpositive.}
+
+\textbf{Example:} Show that $P\Rightarrow Q$ is equivalent to $\neg Q \Rightarrow \neg P$.
+
+    \includegraphics[scale=0.6]{connectives_3.PNG}
+    \par 
+    \textbf{Exercise:} Show that $\neg (P \land Q)$ is equivalent to $\neg P \lor \neg Q$.
+    
+    \textbf{Exercise:} Show that $\neg (P \lor Q)$ is equivalent to $\neg P \land \neg Q$
+\end{frame}
+\section{ Proof Methods}
+\begin{frame}{Proof Methods}
+\begin{block}{Direct Proofs}
+The direct way of proving that $A\Rightarrow B$ is to find a sequence of accepted axioms and theorems of the form $A_i \Rightarrow A_{i+1}$ for $i=1,..., n,$ so that $A_0=A$ and $A_{n+1}=B$:
+\[A=A_0 \Rightarrow A_1 \Rightarrow A_2 \Rightarrow A_3\Rightarrow ... \Rightarrow A_n \Rightarrow A_{n+1}=B.
+\]
+    
+\end{block}
+    The hard part is to find the sequence of theorems that fills in the gap from A to B. Proofs of this form are called \textbf{direct proofs}; the method is called \textbf{deductive reasoning}. 
+\end{frame}
+
+\begin{frame}{Proof Methods}
+    \begin{block}{Indirect Proofs}
+    A statement $A\Rightarrow B$ is true if and only if its conterpositive is true. Therefore, one way to prove $A\Rightarrow B$ is to prove $\neg B \Rightarrow \neg A$. The idea is to consider all alternatives to B. If every such alternative to B leads to contradiction -- of A itself, of an axiom of the system, or of a previously proven proposition -- then B must be true.
+    
+    \end{block}
+    Proofs of this form are called \textbf{indirect proofs} or \textbf{proofs by contradiction}; the method is called \textbf{indirect method}. 
+    \end{frame}
+
+\begin{frame}{Mathematical Induction}
+\begin{itemize}
+    \item There is a third method of mathematical proof that differs significantly from proofs by deduction and proofs by contradiction: \textbf{proof by induction.}
+    \item Inductive proofs can only be used for propositions about integers or propositions indexed by integers. 
+    \item Suppose that we are considering a sequence of statements indexed by the natural numbers, so that the first statement is $P_1$, the second statement is $P_2$, and the nth statement is $P_n$. Suppose that we can verify that:
+    \begin{enumerate}
+        \item statement $P_1$ is true;
+        \item whenever statement $P_k$ is true for some k, then $P_{k+1}$ is also true,
+    \end{enumerate}
+     then we conclude that all of the statements are correct. 
+\end{itemize}\end{frame}
+
+\begin{frame}{Mathematical Induction}
+\begin{block}{Theorem}
+The sum of the first n natural numbers $1+2+3+...+n$ equals $\frac{1}{2}n(n+1)$.
+\end{block}
+\textbf{Proof:} For any natural number $n$, let $P_n$ be the statement:
+\[ P_n: \textit{   } 1+2+3+...+n=\frac{n(n+1)}{2}.
+\]
+Let's check $P_1$. When n=1, we find $\frac{1(1+1)}{2}=1$, so it's true. 
+\par Now we make the inductive hypothesis by assuming that statement $P_k$ is true:
+\[1+2+3+...+k=\frac{k(k+1)}{2}. 
+\]
+We must prove that the statement $P_{k+1}$ is true as well. 
+\end{frame}
+
+\begin{frame}{Mathematical Induction}
+\begin{block}{Theorem}
+The sum of the first n natural numbers $1+2+3+...+n$ equals $\frac{1}{2}n(n+1)$.
+\end{block}
+\textbf{Proof:} 
+\par Now we make the inductive hypothesis by assuming that statement $P_k$ is true:
+\[1+2+3+...+k=\frac{k(k+1)}{2}. 
+\]
+We must prove that the statement $P_{k+1}$ is true as well. 
+\begin{align*}P_{k+1}: 1+2+3+...+k+k+1 &= \frac{k(k+1)}{2}+k+1\\
+& = \left( \frac{k}{2}+1\right)(k+1) \\ 
+&=\frac{(k+1)(k+2)}{2}.
+\end{align*}
+This last statement is exactly $P_{k+1}$. We conclude, by the principle of mathematical induction, that $P_n$ is true for all n.
+\end{frame}
+
+\begin{frame}{Mathematical Induction}
+\begin{block}{Exercise}
+The sum of the first n odd natural numbers is $n^2$:
+\[1+3+5+7+...+(2n-1)=n^2. 
+\]
+\end{block}
+\begin{block}{Exercise}
+Use mathematical induction to prove that $n<2^n$ for all natural numbers n. 
+\end{block}
+\begin{block}{Exercise}
+Use the mathematical induction to prove that:
+\[1^2+2^2+3^2+...+n^2=\frac{n(n+1)(2n+1)}{6}.
+\]
+\end{block}
+\end{frame}
+
+\section{Set Theory}
+\begin{frame}{Sets}
+\begin{block}{Definition}
+A \textit{set} is a collection of things (called its members or elements), the collection being regarded as a single object. We write $a\in A $ to say that $a$ is a member of $A$, and write $a \notin A$ to say that $a$ does not belong to $A$. 
+
+\end{block}
+\begin{itemize}
+    \item Not every set can be defined by listing all its members. Some sets can be infinite. 
+    \item The most common set in economics are budget sets. 
+    \[B=\{(x,y): p_xx+p_yy\leq w, x\geq 0, y\geq 0\}.
+    \]
+    \item This is an example of the general specification:
+    \[S=\{ \text{typical member}: \text{ defining properties} \}.
+    \]
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Sets}
+    \begin{block}{Subsets}
+    $A$ is a \textit{subset} of $B$ if it is true that every member of $A$ is also a member of $B$. 
+    \[A \subset B \iff [\forall x\in A \Rightarrow x\in B ].
+    \]
+    \end{block}
+    \begin{itemize}
+        \item $A$ is smaller than $B$ in some sense, even though $A$ and $B$ could actually be equal. 
+        \item A special case of a subset is when $A$ is a \textit{proper subset} of $B$, meaning that $A\subset B$ and $A \neq B$.
+        \item The empty set $\emptyset$ is a subset to every set. 
+    \end{itemize}
+\end{frame}
+\begin{frame}{Set Operation}
+    \begin{block}{Union}
+    $A$ union $B$ consists of the elements that belong to at least one of the sets $A$ and $B$. 
+    \[A\cup B=\{x: x\in A \text{ or }x\in B\}
+    \]
+    \end{block}
+    \begin{block}{Intersection}
+    $A$ intersection $B$ consists of the elements that belong to both of the sets $A$ and $B$. 
+    \[A\cap B=\{x: x\in A \text{ and }x\in B\}
+    \]
+    \end{block}
+    \begin{block}{Minus}
+    $A$ minus $B$ consists of the elements that belong to  the set $A$ but not $B$. 
+    \[A\setminus B=\{x: x\in A \text{ and }x\notin B\}
+    \]
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}{Venn Diagrams}
+\begin{itemize}
+    \item When considering the relationships between several sets, it is instructive and helpful to represent each set by a region in a plane. 
+    \item The region is drawn so that all the elements belonging to a certain set are contained within some closed region of the plane. 
+    \item Diagrams constructed in this manner are called \textbf{Venn Diagrams. }
+\end{itemize}
+
+    \includegraphics[scale=0.8]{Ven.PNG}
+       
+\end{frame}
+
+\begin{frame}{Some Proofs in Set Theory}
+\begin{block}{}
+Prove that the following relationship is valid for all sets $A$, $B$, and $C$:
+\[A\cap (B\cup C) = (A\cap B) \cup (A\cap C)
+\]
+
+\end{block}
+\includegraphics[scale=0.8]{venn1.PNG}
+\end{frame}
+
+\begin{frame}{Sets}
+    \begin{block}{Complement}
+    If $A$ is a subset of the universal set $\Omega$, then according to the definition of difference, $\Omega \setminus A$ is the set of elements of $\Omega$ that are not in $A$. This set is called the \textbf{complement} of $A$ in $\Omega$ and is sometimes denoted $A^c$ and $\overline{A}$ (and few other notations).
+    \end{block}
+    \begin{block}{Cardinality}
+    The \textbf{cardinality} of a finite set $A$ (denoted $|A|$) is the natural number equal to the number of elements
+in that set. The cardinality of $\mathbb{N}$ (denoted $|\mathbb{N} |$ ) is  $\mathcal{N}_0 $ (pronounced “aleph-nought”). Two sets have the
+same cardinality if there is a way of pairing up each element of the two sets such that every element
+of each set is paired with exactly one element of the other set.
+    
+    \end{block}
+\end{frame}
+\begin{frame}{Important Theorems}
+    \begin{block}{Power Sets}
+    The \textbf{power set} of a set $A$, denoted $\wp(A)$ is the set of all subsets of $A$. Using set-builder notation, this
+is the set $\wp(A)= \{B: B\subset A\}$.
+    \end{block}
+    \begin{block}{Cantor’s Theorem}
+    If $A$ is a set, then $|A| < |\wp(A)|$.
+    \end{block}
+    \begin{block}{Theorem}
+    If A and B are sets where $A\subset B$ and $B\subset A$, then $A = B$.
+    \end{block}
+This is an extremely useful way to prove two sets are equal. In fact, if you ever find yourself
+needing to prove that two sets are equal, you might want to pull out this theorem.
+    
+\end{frame}
+\begin{frame}{Exercise}
+    Prove the following properties of set operations:
+    \begin{enumerate}
+        \item $(A\cap B)^c=A^c\cup B^c$;
+         \item $(A\cup B)^c=A^c\cap B^c$;
+          \item $A\cap B=(A^c\cup B^c)^c$;
+          \item $A\cup B=(A^c\cap B^c)^c$.
+    \end{enumerate}
+\end{frame}
+\section{Probability Theory}
+\begin{frame}{Introduction to Probability}
+    \begin{itemize}
+        \item Suppose we perform an experiment whose outcome is uncertain. Let $\Omega$ denote the space of all possible outcomes-- the \textbf{sample space} of the experiment.
+        \item An \textbf{event} is a set of of outcomes in the sample space, that is, a subset of $\Omega.$
+        \item The events $E_1,..., E_n$ of a collection are \textbf{mutually exclusive} if for each pair of events $E_i$ and $E_j$ in the collection, $E_i\cap E_j=\emptyset$.
+    \end{itemize}
+    \end{frame}
+\begin{frame}{Introduction to Probability}
+\begin{itemize}
+    \item To each event $E$, we assign a number $P(E)$, the \textbf{probability} that event $E$ will occur when we preform the experiment. The probability $P(E)$ must satisfy the following rules:
+    \begin{enumerate}
+        \item For any event $E$, $0\leq P(E)\leq 1$. 
+        \item $P(\Omega)=1$. 
+        \item If $E_1,..., E_n$  are mutually exclusive, then 
+        \[P(E_1\cup ...\cup E_n)=\sum_{i=1}^nP(E_i).
+        \]
+        \item $P(E^c)=1-P(E)$.
+    \end{enumerate}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Some More Definitions}
+    \begin{block}{Conditional Probability}
+    For any two events $E_1$ and $E_2$, the \textbf{conditional probability} of $E_2$ given $E_1$, written $P(E_2|E_1)$, is the probability that $E_2$ will occur, given $E_1$ has occured. 
+    \[P(E_2|E_1)=\frac{P(E_1\cap E_2)}{P(E_1)}.
+    \]
+    \end{block}
+    \begin{block}{Independence}
+    We say that events $E_1$ and $E_2$ are \textbf{independent} if the probability of one is independent of the occurrence of the other, that is, if $P(E_2|E_1)=P(E_2)$, or equivalently, if $P(E_1\cap E_2)=P(E_1)\cdot P(E_2)$.
+    \end{block}
+    \end{frame}
+
+\begin{frame}{Bayes' Rule}
+For any two events $E$ and $F$, $E\cap F$ and $E\cap F^c$ are mutually exclusive since $F$ and $F^c$ are. Therefore, 
+
+\begin{equation}
+    P(E)=P(E\cap F) + P(E\cap F^c)=P(E|F)\cdot P(F)+P(E|F^c)\cdot P(F^c).
+\end{equation}
+Furthermore, 
+\begin{equation}
+    P(E\cap F) =P(E|F)\cdot P(F).
+\end{equation}
+\begin{equation}
+    P(F\cap E) =P(F|E)\cdot P(E).
+\end{equation}
+We put together equations (1), (2) and (3) to derive \textbf{Bayes' Rule}:
+\[P(F|E)=\frac{P(F\cap E)}{P(E)}=\frac{P(E|F)\cdot P(F)}{P(E|F)\cdot P(F)+P(E|F^c)\cdot P(F^c)}.
+\]
+\end{frame}
+
+\begin{frame}{Expectations}
+    If the elements of the sample space $\Omega$ are a finite set $\{ x_1,..., x_n\}$ of real numbers, the $x_i$'s are called \textbf{discrete random variables}. In this case, the \textbf{expected value} or \textbf{mean} is 
+    \[E(x)=\sum_{i=1}^nP(x_i)\cdot x_i,
+    \]
+    the weighted average of the outcomes. 
+    \par 
+    More generally, for any set $\Omega$, suppose that $f:\Omega\rightarrow \mathcal{R}$ is a real-valued function. Then the \textbf{expected value} of $f$ is 
+    \[E(f)=\sum_{i=1}^nP(x_i)\cdot f(x_i).
+    \]
+    When f measures utility, then $E[f]$ is called \textbf{expected utility.}
+\end{frame}
+\begin{frame}{Variance}
+    \begin{itemize}
+        \item In many experiments with random numbers, we are interested not only in the mean, but also in the dispersion or spread of the $x_i$'s about the mean. 
+        \item To measure the likelihood of achieving the expected value of an experiment, we form a new random variable $(x_i-E(x))^2$, the squared distance from the mean, and compute its expected value.
+        \item The result is called the \textbf{variance} of the random variable:
+        \[ Var(x)=\sum_{i=1}^nP(x_i)\left(x_i-E(x)\right)^2.
+        \]
+        \item If the $x_i$'s are returns of different investments in a portfolio, then the variance measures the \textbf{risk} of the portfolio. If the variance is zero, the portfolio has a certain return of $E(x)$. If the variance is large, there is much uncertainty in the return of the portfolio. 
+    \end{itemize}
+\end{frame}
+\begin{frame}{Standard Deviation and Covariance}
+    \begin{block}{Standard Deviation}
+    The squared root of the variance is called the \textbf{standard deviation:}
+\[\sigma = \sqrt{\sum_{i=1}^nP(x_i)\left(x_i-E(x)\right)^2}.
+\]
+    \end{block}
+    \begin{block}{Covariance}
+    The \textbf{covariance} of two random variables $X=\{x_1, x_2,..., x_n\}$ and $Y=\{y_1,y_2,..., y_m\}$ is:
+    \[ Cov(X, Y)=\sum_{i=1}^n\sum_{j=1}^mP(X=x_i, Y=y_j)\left(x_i-E(X)\right)\left(y_j-E(Y)\right).
+    \]
+    
+    \end{block}
+    If $X$ and $Y$ are independent, then $Cov(X, Y)=0.$
+\end{frame}
+
+\begin{frame}{Continuous Random Variables}
+   \begin{itemize}
+       \item  The notion of a random variable for a finite sample space can be extended to the case of a \textit{continuous } sample space $\Omega$ in which every point in some interval of real numbers can be considered as a possible outcome. 
+       \item In this case, the probability of any single number is likely to be zero. 
+       \item We use a function $f:\Omega\rightarrow \mathbb{R}_+.$ to assign probabilities, with the probability $P(a\leq x \leq b)$ that x takes on a value between points $a$ and $b$ equal to area under the graph of $f$ between $\{x=a\}$ and $\{x=b\}$:
+       \[P(a\leq x\leq b)=\int_a^bf(x) dx. 
+       \]
+       \item A function $f$ is called the \textbf{probability density function} or \textbf{pdf} of the continuous random variable.
+   \end{itemize}
+   \end{frame}
+
+\begin{frame}{Continuous Random Variables}
+\begin{block}{Expectation}
+If $X$ is a continuous random variable, the mean or expected value is 
+\[E(X)=\int_{-\infty}^\infty xf(x)dx.
+\]
+\end{block}\begin{block}{Variance}
+If $X$ is a continuous random variable, the variance is 
+\[Var(X)=\int_{-\infty}^\infty (x-E(x))^2f(x)dx.
+\]
+\end{block}
+If $h: \Omega\rightarrow \mathbb{R}$ is another function on continuous sample space, then the \textbf{expected value} of h is:
+\[E(h(x))=\int_{-\infty}^\infty h(x)f(x)dx.
+\]
+\end{frame}
+
+\section{Matrix Algebra }
+\begin{frame}{Matrix Algebra }
+\begin{itemize}
+    \item A \textbf{matrix } is simply a rectangular array of numbers. So, any table of data is a matrix. \item The size of a matrix is indicated by the number of its rows and the number of its columns. A matrix with k rows and n columns is called a $k\times n $ ("k by n") matrix. 
+    \item The number in row $i$ and column $j$ is called the (i, j)the entry, and is often written $a_{ij}$. 
+    \item Two matrices are \textit{equal} if they both have the same size and if the corresponding entries in the two matrices are equal. 
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Matrix Addition}
+    If two matrices are the same size, then they can be added. The $(i,j)$th entry of the sum matrix is simply the sum of the $(i,j)$th entries of the two matrices being added. 
+    
+    \includegraphics[scale=0.8]{matrix1.PNG}
+\end{frame}
+
+\begin{frame}{Matrix Subtraction}
+    If two matrices are the same size, then they can be subtracted. The $(i,j)$th entry of the subbracted matrix is simply the difference of the $(i,j)$th entries of the two matrices being subtracted. 
+    \bigskip
+    \includegraphics[scale=0.8]{matrix2.PNG}
+\end{frame}
+
+\begin{frame}{Scalar Multiplication}
+    Matrices can be multiplied by ordinary numbers, which we also call \textbf{scalars.} This operation is called \textbf{scalar multiplication. } The product of the matrix $A$ and the number $r$, denoted $rA$, is the matrix created by multiplying each entry of $A$ by $r$. 
+   
+    \bigskip
+    \includegraphics[scale=0.8]{matrix3.PNG}
+\end{frame}
+
+\begin{frame}{Matrix Multiplication}
+    \begin{itemize}
+        \item Just as two numbers can be multiplied together, so can two matrices. 
+        \item There are two differences: Not all pairs of matrices can be multiplied together, and the order in which matrices are multiplied can matter. 
+        \item We can define the matrix product $AB$ if and only if 
+        \begin{center}
+            \textit{number of columns of A = number of rows of B.}
+        \end{center}
+        \item For the matrix product to exist. $A$ must be $k\times m$ and $B$ must be $m\times n$. To obtain $i,j$th entry of AB, multiply the $i$th row of A and the $j$th column of B as follows:
+        \begin{align*}
+             \begin{pmatrix}
+  a_{i1} & a_{i2} & \cdots & a_{im}
+\end{pmatrix} & \cdot  \begin{pmatrix}
+  b_{1j} \\ b_{2j}\\ \vdots \\b_{mj}
+\end{pmatrix} & =  a_{i1}b_{1j}+a_{i2}b_{2j}+\cdots + a_{im}b_{mj}.
+        \end{align*}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Matrix Multiplication}
+\begin{itemize}
+    \item In other words, the $(i,j)$th entry of the product $AB$ is defined to be 
+\[\sum_{h=1}^m a_{ih}b_{hj}.
+\]
+\item If A is $k\times m$ and $B$ is $m\times n$, then the product will be $k\times n$. 
+\item The product matrix inherits the number of its rows from A and the number of its columns from B.
+\item Matrix addition, subtraction and multiplication obey most of the same laws that numbers do.
+\begin{align*}
+    (A+B)+C=A+(B+C);\\
+    (AB)C=A(BC);
+    \\ A(B+C)=AB+AC;\\
+    (A+B)C=AC+BC.
+\end{align*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Identity Matrix}
+The $n\times n$ matrix 
+\begin{align*}
+    I= & \begin{pmatrix}
+      1 & 0& \cdots & 0 \\
+      0 & 1 & \cdots & 0\\
+      \vdots & \vdots & \ddots & \vdots \\
+      0& 0 & \cdots & 1
+    \end{pmatrix}
+\end{align*}
+     
+with $a_{ii}=1$ for all $i$ and $a_{ij}=0$ for all $j\neq j$, has the property that for any $m\times n $ matrix A, 
+\[AI=A,
+\]
+and for any $n\times m $ matrix B, 
+\[IB=B.
+\]
+The matrix $I$ is called the $n\times n$ \textbf{identity matrix} because it is a multiplicative identity for matrices just as the number 1 is for real numbers.
+\end{frame}
+\begin{frame}{Kronecker Product}
+    If A is an $m\times n$ matrix and B is a $p\times q$ matrix, then the Kronecker product $A\otimes B$ is the $pm \times qn$ block matrix:
+    \includegraphics[scale=0.6]{kronecker.PNG}
+\end{frame}
+
+\begin{frame}{Transpose}
+    The \textbf{transpose} of a $k\times n$ matrix $A$ is the $n\times k$ matrix obtained by interchanging the rows and columns of $A$. This matrix is often written as $A^T$. For example, 
+    \begin{align*}
+       \begin{pmatrix}
+          a_{11} & a_{12} & a_{13} \\
+          a_{21} & a_{22} & a_{23}
+        \end{pmatrix}^T & = \begin{pmatrix}
+          a_{11} & a_{21}\\
+          a_{12} & a_{22} \\ a_{13} 
+            & a_{23}
+        \end{pmatrix}
+    \end{align*}
+    
+    The first row of A becomes the first column of $A^T$. The second row of A becomes the second column of $A^T$, and so on. Thus, the $(i,j)$th entry of $A$ becomes the $(j,i)$th entry of $A^T$.
+    
+\end{frame}
+
+\begin{frame}{Transpose: Exercise}
+The following rules are fairly straightforward to verify:
+\[(A+B)^T=A^T+B^T,
+\]
+\[(A-B)^T=A^T-B^T,
+\]
+   \[(A^T)^T=A,
+   \]
+   \[(rA^T)=rA^T.
+   \]
+\end{frame}
+\begin{frame}{Transpose}
+\begin{block}{Theorem}
+    Let $A$ be a $k\times m $ matrix and $B$ be an $m\times n $ matrix. Then, $(AB)^T=B^TA^T.$
+\end{block}
+    \includegraphics[scale=0.6]{transpose.PNG}
+    
+\end{frame}
+
+\begin{frame}{Echelon Form}
+    \begin{itemize}
+        \item Suppose that we have a $k\times n$ matrix A. To find its echelon form, we are allowed to use the following row operations:
+        \begin{enumerate}
+            \item Interchange two rows of a matrix.
+            \item Change a row by adding to it a multiple of another row.
+            \item  Multiply each element in a row by the same nonzero number. 
+            
+        \end{enumerate}
+    \end{itemize}
+    \begin{block}{Definition}
+    A row of a matrix is said to have k leading zeros if the first k elements
+of the row are all zeros and the (k + 1)th element of the row is not zero. With this terminology, a matrix is in \textbf{row echelon form} if each row has more leading zeros than the row preceding it.
+    \end{block}
+    \begin{align*}
+        \begin{pmatrix}
+           1 & 4 & 7 \\
+           0 & 5 & -3
+         \end{pmatrix}
+        & 
+        \begin{pmatrix}
+           3& 6& 9\\
+           0 & 0& -7\\
+           0 & 0 & 0
+        \end{pmatrix}
+        & 
+        \begin{pmatrix}
+           0& 7 \\
+           9& 0\\
+           0&2 
+        \end{pmatrix}
+    \end{align*}
+\end{frame}
+
+\begin{frame}{Rank}
+\begin{block}{Definition}
+The rank of a matrix is the number of nonzero rows in its row
+echelon form.
+
+\end{block}
+    \begin{itemize}
+        \item Since we can reduce any matrix to several different row echelon matrices, we need to show that this definition of rank is independent
+of which row echelon matrix we compute. 
+\item Also, notice that $rank(A)\leq k$ (rank is less than the number of rows in A). 
+\item  $rank(A)\leq n$ (rank is less than the number of columns in A). 
+    \end{itemize}
+\end{frame}
+
+\section{System of Equations in Matrix Form}
+\begin{frame}{System of Equations in Matrix Form}
+Consider a system of linear equations:
+\[a_{11}x_1 +a_{12}x_2 +... +a_{1n}x_n=b_1 
+\]
+\[ a_{21}x_1 +a_{22}x_2+...+a_{2n}x_n=b_2 
+\]
+\[ \vdots  \vdots    \vdots  
+\]
+\[a_{k1}x_1+a_{k2}x_2+...+a_{kn}x_n=b_k 
+\]
+
+This system can be expressed much compactly using matrix notation. Let A denote the coefficient matrix of the system, $x$ the variable matrix, and $b$ parameter column. 
+
+    \begin{align*}
+    \begin{array}{ccc}
+      A=  \begin{pmatrix}
+          a_{11} & a_{12} & \cdots & a_{1n}\\ 
+          a_{21} & a_{22} & \cdots & a_{2n}\\
+          \vdots & \vdots & \ddots & \vdots\\
+          a_{k1} & a_{k2} & \cdots & a_{kn}
+       \end{pmatrix}  & 
+      x= \begin{pmatrix}
+          x_1 \\ x_2 \\ \vdots \\ x_n
+       \end{pmatrix}
+         & 
+        b= \begin{pmatrix}
+            b_1 \\ b_2\\ \vdots \\ b_k
+         \end{pmatrix}
+    \end{array}
+    \end{align*}
+
+
+Or simply as $Ax=b$.
+    
+\end{frame}
+
+
+\begin{frame}{Gaussian and Gauss-Jordan Elimination}
+    For linear systems, we are interested in the following questions:
+    \begin{enumerate}
+        \item Does a solution exist?
+        \item How many solutions are there?
+        \item Is there an efficient algorithm that computes actual solutions?
+    \end{enumerate}
+    There are essentially three ways of solving such systems:
+    \begin{enumerate}
+        \item substitution,
+        \item elimination of variables, and
+        \item matrix methods.
+    \end{enumerate}
+\end{frame}
+\begin{frame}{Substitution}
+    \begin{itemize}
+        \item To use this method, solve one equation of system for one variable, say $x_n$, in terms of other variables in that equation. 
+        \item Substitute this expression for $x_n$ into the other $k-1$ equations. The result is a new system with $k-1$ equations and $n-1$ variables. 
+        \item Continue this process by solving one equation in the new system for $x_{n-1}$ and substituting this expression into the other $k-2$ equations to obtain a new system of $k-2$ equations and $n-2$ variables. 
+        \item Proceed until you reach a system with just a single equation. 
+    \end{itemize}
+\end{frame}
+\begin{frame}{Gaussian Elimination}
+    \begin{itemize}
+        \item To solve a general system of equations by elimination of variables, use the coefficients of $x_1$ in the first equation to eliminate the $x_1$ term from all equations below. To do this, add proper multiples of the first equation to each of the succeeding equations. 
+        \item Now disregard the first equation, and eliminate the next variable- $x_2$.
+        \item Continue eliminating until you reach the last row. 
+        \item After solving the last equation, substitute back to find the remaining variables. 
+    \end{itemize}
+\end{frame}
+\begin{frame}{System of Linear Equations: Matrix Methods}
+Consider the linear system of equations $Ax = b$. 
+\begin{enumerate}
+    \item If number of equations is $<$ the number of unknowns, then:
+    \begin{enumerate}
+        \item $Ax=0$ has infinitely many solutions, 
+        \item For any given $b$, $Ax=b$ has 0 or infinitely many solutions. 
+        \item If $rank(A)$ = number of equations, $Ax=b$ has infinitely many solutions for any b. 
+    \end{enumerate}
+    \item If number of equations is $>$ the number of unknowns, then:
+    \begin{enumerate}
+        \item $Ax=0$ has one or infinitely many solutions, 
+        \item For any given $b$, $Ax=b$ has 0, 1 or infinitely many solutions. 
+        \item If $rank(A)$ = number of equations, $Ax=b$ has 0 or 1 solutions for any b. 
+    \end{enumerate}
+    \item If number of equations is $=$ the number of unknowns, then:
+    \begin{enumerate}
+        \item $Ax=0$ has 1 or infinitely many solutions, 
+        \item For any given $b$, $Ax=b$ has 0, 1 or infinitely many solutions. 
+        \item If $rank(A)$ = number of equations, $Ax=b$ has exactly 1 solution for any b. 
+    \end{enumerate}
+\end{enumerate}
+    
+\end{frame}
+
+
+\begin{frame}{Special Kind of Matrices}
+Suppose $A$ is  a $k\times n$ matrix.
+\begin{block}{Square Matrix}
+k=n, that is, equal number of rows and columns.
+    
+\end{block}
+\begin{block}{Column Matrix}
+n=1, that is, one column. For example, 
+\begin{align*}
+\begin{pmatrix}
+   a \\ b\\ c
+\end{pmatrix}
+\end{align*}    
+\end{block}
+\begin{block}{Row Matrix}
+k=1, that is, one row. For example, 
+\begin{align*}
+    \begin{pmatrix}
+       a& b
+    \end{pmatrix}
+\end{align*}
+\end{block}
+
+
+    %
+    \end{frame}
+
+
+\begin{frame}{Special Kind of Matrices}
+\begin{block}{Diagonal Matrix}
+k=n and $a_{ij}=0$ for $i\neq j$, that is, a square matrix in which all nondiagonal entries are $0$. For example, 
+\begin{align*}
+    \begin{pmatrix}
+       a & 0 & 0\\ 
+       0& b& 0\\
+       0&0 & c
+    \end{pmatrix}
+\end{align*}
+
+\end{block}
+\begin{block}{Symmetric Matrix}
+$A^T=A$, that is $a_{ij}=a_{ji}$ for all $i, j$. These matrices are necessarily square. For example, 
+\begin{align*}
+    \begin{pmatrix}
+       a & b& c& \\
+       b& d& e\\
+       c& e& f
+    \end{pmatrix}
+\end{align*}
+
+\end{block}
+\end{frame}
+\begin{frame}{Special Kind of Matrices}
+\begin{block}{Upper-Triangular Matrix}
+$a_{ij}=0$ if $i>j$, that is, a matrix in which all entries below the diagonal are 0. For example, 
+\begin{align*}
+    \begin{pmatrix}
+       1&2&3 \\
+       0& 4& 5\\
+       0& 0& 6
+    \end{pmatrix}
+\end{align*}
+\end{block}
+\begin{block}{Lower-Triangular Matrix }
+$a_{ij}=0$ if $i<j$, that is, matrix in which all entries above the diagonal are $0$. For example, 
+\begin{align*}
+    \begin{pmatrix}
+       1&0&0\\
+       2&3&0\\
+       4&5&6
+    \end{pmatrix}
+\end{align*}
+
+\end{block}
+\end{frame}
+
+
+
+
+\begin{frame}{Special Kind of Matrices}
+\begin{block}{Idempotent Matrix}
+A square matrix A for which $A\cdot A=A$, such as $A=I$ or 
+\begin{align*}
+    \begin{pmatrix}
+       5 & -4\\
+       4&-5
+    \end{pmatrix}
+\end{align*}
+
+\end{block}
+\begin{block}{Permutation Matrix}
+A square matrix of $0$s and $1$s in which each row and each column contains exactly one $1$. For example, 
+\begin{align*}
+    \begin{pmatrix}
+       0&1&0\\
+       1&0&0\\
+       0&0&1
+    \end{pmatrix}
+\end{align*}
+
+\end{block}
+\begin{block}{Nonsingular Matrix}
+A square matrix whose rank equals the number of its rows.
+
+\end{block}
+\end{frame}
+
+\begin{frame}{Inverse}
+\begin{block}{Definition}
+Suppose A is $n\times n$ matrix. The matrix $B$ is \textbf{inverse } of $A$ if $AB=BA=I$. If matrix B exists, we say that $A$ is \textbf{invertible.}
+    
+\end{block}
+    \begin{itemize}
+        \item An $n\times n$ matrix A can have at most one inverse. We denote it by $A^{-1}.$
+        \item If a matrix is nonsingular, then it is invertible. 
+        \item When a coefficient matrix in a linear system of equations is invertible, then the system of linear equations $Ax=b$ has a unique solution $x=A^{-1}b$.
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Inverse}
+\begin{block}{Definition}
+Let $A$ be a $k\times n$ matrix. The $n\times k$ matrix $B$ is a \textbf{right inverse} for $A$ if $AB=I$. The $n\times k$ matrix $c$ is a \textbf{left inverse} for $A$ if $CA=I$.
+\end{block}
+\textbf{Example:} The matrix 
+$\begin{pmatrix}
+   0& 1 \\ 
+   0& -1\\ 
+   1&2
+\end{pmatrix} $
+is a right inverse for the matrix 
+$\begin{pmatrix}
+   1&3&1\\
+   2&1&0
+\end{pmatrix} $
+but not a left inverse. On the other hand, the matrix $\begin{pmatrix}
+   0&0&1\\
+   1& -1&2
+\end{pmatrix}$
+is a left inverse for $\begin{pmatrix}
+   1&2 \\
+   3&1\\
+   1&0
+\end{pmatrix}$, but not a right inverse. 
+\begin{itemize}
+    \item If $A$ has a right inverse $B$ and a left inverse C, then $A$ is invertible, and $B=C=A^{-1}$.
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Inverse}
+Let $A$ and $B$ be square invertible matrices. Then, 
+\begin{enumerate}
+    \item $(A^{-1})^{-1}=A$.
+    \item $(A^T)^{-1}=(A^{-1})^T$.
+    \item If $AB$ is invertible, then $(AB)^{-1}=B^{-1}A^{-1}$.
+    \item $A^m$ is invertible for any integer $m$, and $(A^m)^{-1}=(A^{-1})^m=A^{-m}$.
+    \item For any integers $r$ and $s$, $A^rA^s=A^{r+s}$.
+\end{enumerate}
+  
+    
+\end{frame}
+\begin{frame}{Inverse}
+\begin{block}{Theorem}
+Let $A$ be a square matrix partitioned as 
+\[A=\begin{pmatrix}
+   A_{11} & A_{12}\\
+   A_{21} & A_{22}
+\end{pmatrix},
+\]
+where $A_{11}$ and $A_{22}$ are square submatrices. If both $A_{22}$ and the matrix
+\[D=A_{11}-A_{12}A_{22}^{-1}A_{21}
+\]
+are nonsingular, then $A$ is nonsingular and
+\[A^{-1}=\begin{pmatrix}
+   D^{-1} & -D^{-1}A_{12} A_{22}^{-1}\\
+   -A_{22}^{-1}A_{21}D^{-1} & A_{22}^{-1}(I+A_{21}D^{-1}A_{12}A_{22}^{-1})
+\end{pmatrix}
+\]
+\end{block}    
+\end{frame}
+\begin{frame}{Determinant}
+\begin{itemize}
+    \item The determinant of a matrix is defined inductively. 
+    \item There is a natural definition for $1\times 1$ matrices. 
+    \item Then, we use this definition to define the determinant of $2\times 2$ matrices. 
+    \item Once we have defined the determinant for $2\times 2$ matrices, we use this definition to define the determinant for $3\times 3$ matrices, and so on. 
+\end{itemize}
+    
+\end{frame}
+\begin{frame}{Determinant}
+\begin{itemize}
+    \item A $1\times 1$ matrix is just a scalar $a$. It is natural to define the determinant of such a matrix to be just that scalar $a$:
+    \[det(a)=a.
+    \]
+    \item For a $2\times 2 $ matrix 
+    \[A=\begin{pmatrix}
+       a_{11} & a_{12}\\
+       a_{21} & a_{22} 
+    \end{pmatrix},
+    \]
+     we define the determinant by:
+     \[det(A) = det\begin{pmatrix}
+       a_{11} & a_{12}\\
+       a_{21} & a_{22} 
+    \end{pmatrix}=a_{11}a_{22}-a_{12}a_{21},
+    \]
+\end{itemize}
+    which can be written as:
+     \[ det\begin{pmatrix}
+       a_{11} & a_{12}\\
+       a_{21} & a_{22} 
+    \end{pmatrix}=a_{11}det(a_{22})-a_{12}det(a_{21}).
+    \]
+\end{frame}
+
+\begin{frame}{Determinant}
+\begin{block}{Definition}Let $A$ be an $n\times n$ matrix. Let $A_{ij}$ be the $(n-1)\times (n-1)$ submatrix obtained by deleting row $i$ and column $j$ from $A$. Then, the scalar
+\[M_{ij}=det(A_{ij})
+\]
+  is called the $(i,j)$th \textbf{minor } of $A$.  
+\end{block}
+\begin{block}{Determinant}
+The \textbf{determinant  } of $n\times n$ matrix $A$ is given by 
+\[det(A)=a_{11}M_{11}-a_{12}M_{12}+...+(-1)^{n+1}a_{1n}M_{1n}.
+\]
+
+\end{block}
+\end{frame}
+
+\begin{frame}{Determinant}
+\begin{itemize}
+    \item The determinant of a lower-triangular, upper-triangular, and diagonal matrix is the product of its diagonal entries.
+    \item If $A$ is a $n\times n$ matrix, and $R$ is its row echelon form, then 
+    \[det(A)=c\cdot det(R)
+    \]
+    \item A square matrix is nonsingular, if and only if its determinant is nonzero.
+    
+\end{itemize}
+    \begin{block}{Cramer's Rule}
+    Let A be a nonsingular matrix. Then, the unique solution $x=(x_1, x_2,\cdots, x_n)$ of the system $Ax=b$ is 
+    \[x_i=\frac{det(B_i)}{det(A)}, \text{ for }i=1,2,\cdots, n,
+    \]
+    where $B_i$ is the matrix $A$ with the right hand side $b$ replacing the $i$th column of $A$.
+    \end{block}
+\end{frame}
+\begin{frame}{Determinant}
+Let $A$ be a square matrix. Then, 
+\begin{itemize}
+    \item $det(A^T)=det(A)$.
+    \item $det(AB)=det(A)det(B)$.
+    \item $det(A+B)\neq det(A)+det(B) $ in general.
+    \item If one forms matrix $B$ by interchanging two rows or two columns of matrix $A$, then $det(B)=-det(A)$.
+    \item If two rows or two columns of $A$ are equal, then $det(A)=0.$
+    \item If $A$ is invertible, then $det(A^{-1})=\frac{1}{det(A)}$. 
+\end{itemize}
+    
+\end{frame}
+\section{Eigenvalue and Eigenvectors}
+
+\begin{frame}{Eigenvalues}
+    \begin{block}{Definition}
+    Let $A$ be a square matrix. An \textbf{eigenvalue} of $A$ is a number $r$ which when subtracted from each of the diagonal entries of $A$ converts $A$ into a singular matrix. $r$ is an eigenvalue of $A$ if and only if $A-rI$ is singular.
+    \end{block}
+    \begin{itemize}
+        \item Let's look for the eigenvalues of the matrix $\begin{pmatrix}
+           1& 0\\ 0& 5
+        \end{pmatrix}$. Subtracting a 1 from each of the diagonal entries yields the singular matrix $\begin{pmatrix}
+           0& 0\\
+           0& 4
+        \end{pmatrix}$. Subtracting $5$ from each of the diagonal entries yields the singular matrix $\begin{pmatrix}
+           -4 & 0\\
+           0 & 0
+        \end{pmatrix}$. Therefore, 1 and 5 are eigenvalues of $\begin{pmatrix}
+           1& 0\\ 0& 5
+        \end{pmatrix}$.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Eigenvalues}
+\begin{itemize}
+    \item The diagonal entries of a diagonal matrix $D$ are eigenvalues of $D$. 
+    \item A square matrix $A$ is singular if and only if $0$ is an eigenvalue of $A$. 
+    
+\end{itemize}
+\par \textbf{Example 1:} Consider matrix $B=\begin{pmatrix}
+   1 &-1 \\
+   -1 &1
+\end{pmatrix}$. B is a singular matrix, and also 0 is an eigenvalue. B has two eigenvalues, 0 and 2. 
+
+\par \textbf{Example 2:} A matrix $M$ whose entries are nonnegative and whose columns (or rows) each add to 1, such as $\begin{pmatrix}
+   \frac{1}{2} & \frac{2}{3}\\
+   \frac{1}{2}& \frac{1}{3}
+\end{pmatrix}$ is called a \textbf{Markov matrix}. If we subtract a 1 from each diagonal entry of the Markov matrix, 
+\[M-1I=\begin{pmatrix}
+   -\frac{1}{2} &\frac{2}{3}\\
+   \frac{1}{2} & -\frac{2}{3}
+\end{pmatrix}
+\]
+then each column of the transformed matrix adds up to 0. The argument shows that $r=1$ is an eigenvalue of every Markov matrix.
+\end{frame}
+\begin{frame}{Eigenvalues}
+\begin{itemize}
+    \item It's not easy to find an eigenvalue just by looking at it. We need a more systematic process. 
+    \item $r$ is an eigenvalue of $A$; that is, $A-rI$ is a singular matrix, if and only if 
+    \[det(A-rI)=0.
+    \]
+    \item For an $n\times n$ matrix $A$, the left-hand side of the above equation is an $n$th order polynomial in the variable $r$, called \textbf{characteristic polynomial} of $A$.
+    \item For a general $2\times 2$ matrix, the characteristic polynomial is
+    \[det(A-rI)=det\begin{pmatrix}
+       a_{11}-r & a_{12}\\ 
+       a_{21} & a_{22}-r
+    \end{pmatrix}
+    \]
+    \[
+    =r^2-(a_{11}+a_{22})r+(a_{11}a_{22}-a_{12}a_{21})
+    \]
+\end{itemize}
+    
+\end{frame}
+\begin{frame}{Eigenvalues}
+\begin{block}{Definition}
+The \textbf{trace } of a square matrix is the sum of its diagonal entries:
+\[trace(A)=a_{11}+a_{22}+\cdots +a_{kk}.
+\]
+\end{block}
+\begin{block}{Theorem}
+Let A be a $k\times k$ matrix with eigenvalues $r_1,r_2,..., r_k$. Then, 
+\begin{enumerate}
+    \item $r_1+r_2+\cdots+r_k=trace(A)$, 
+    \item $r_1\cdot r_2\cdots r_k=det(A)$.
+\end{enumerate}
+\end{block}
+    
+\end{frame}
+
+\begin{frame}{Eigenvalues and Eigenvectors}
+\begin{block}{Definition}
+    When $r$ is an eigenvalue of $A$, a nonzero vector $v$ such that 
+    \[(A-rI)v=0
+    \]
+    is called an \textbf{eigenvector } of A corresponding to eigenvalue $r$. 
+\end{block}
+    We demand that $v$ be nonzero because the zero vector, $v=0$, is a solution to every $(A-rI)v=0$ for any $r$. 
+    
+    If $r$ is an eigenvalue and $v$ is a corresponding eigenvector, then $Av=rv.$ This process works both ways. 
+    \end{frame}
+
+\begin{frame}{Eigenvalues and Eigenvectors}
+\begin{block}{Theorem}
+Let $A$ be an $n\times n$ matrix and let $r$ be a scalar. Then, the following statements are equivalent:
+\begin{enumerate}
+    \item Subtracting $r$ from each diagonal entry of $A$ transform $A$ into a singular matrix. 
+    \item $A-rI$ is singular matrix. 
+    \item $det(A-rI)=0$. 
+    \item $(A-rI)v=0$ for some nonzero vector $v$. 
+    \item $Av=rv$ for some nonzero vector $v$. 
+\end{enumerate}
+
+\end{block}
+\end{frame}
+\section{Quadratic Forms and Definite Matrices}
+\begin{frame}{Quadratic Forms}
+    \begin{block}{Definition}
+    A \textbf{quadratic form} on $\mathbb{R}^n$ is a real-valued function of the form 
+    \[Q(x_1,\cdots, x_n)=\sum_{i\leq j}a_{ij}x_i x_j,
+    \]
+    in which each term is a monomial of degree two. 
+\end{block}
+\begin{itemize}
+    \item Each quadratic form $Q$ can be represented by a \textit{symmetric} matrix $A$ so that 
+    \[Q(x)=x^T\cdot A \cdot x.
+    \]
+    \item \textbf{Example:} The quadratic form $a_{11}x_1^2+a_{12}x_1x_2+a_{22}x_2^2$ can be written as 
+    \begin{align*}
+      \begin{array}{ccccc}
+         \begin{pmatrix}
+            x_1 & x_2
+         \end{pmatrix}  & \cdot & \begin{pmatrix}
+            a_11 & \frac{1}{2}a_{12}\\
+            \frac{1}{2}a_{12}& a_{22}
+         \end{pmatrix}
+           &\cdot & \begin{pmatrix}
+              x_1 \\ x_2
+           \end{pmatrix}
+      \end{array}  
+    \end{align*}
+    
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Definiteness of Quadratic Forms}
+   \begin{block}{Definition}
+    Quadratic forms that are always greater than zero, and only 0 at the origin, are called \textbf{positive definite}. \\
+    Quadratic forms that are always less than zero, and only 0 at the origin, are called \textbf{negative definite}. \\
+    Quadratic forms that take both positive and negative values are called \textbf{indefinite}. 
+    Quadratic forms that are greater than zero but may equal zero at some nonzero $x$, are called \textbf{positive semidefinite}. \\
+    Quadratic forms that are less than zero but may equal zero at some nonzero $x$, are called \textbf{negative semidefinite}. \\
+\end{block} 
+\end{frame}
+
+\begin{frame}{Definite Symmetric Matrices}
+    A symmetric matrix is called positive definite, positive semidefinite, negative definite, etc., according to the definiteness of corresponding quadratic form $Q(x)=x^TAx$.
+    \begin{block}{Definition}
+    Let $A$ be $n\times n$ symmetric matrix, then A is:
+    \begin{enumerate}
+        \item \textbf{positive definite} if $Q(x)=x^TAx>0$ for all $x\neq 0$ in $\mathbb{R}^n$,
+        \item \textbf{positive semidefinite} if $Q(x)=x^TAx\geq 0$ for all $x\neq 0$ in $\mathbb{R}^n$,
+        \item \textbf{negative definite} if $Q(x)=x^TAx<0$ for all $x\neq 0$ in $\mathbb{R}^n$,
+        \item \textbf{negative definite} if $Q(x)=x^TAx\leq 0$ for all $x\neq 0$ in $\mathbb{R}^n$,
+        \item \textbf{indefinite} if $Q(x)=x^TAx>0$ for some $x\neq 0$, and $Q(x)=x^TAx<0$ for other $x\neq 0$ in $\mathbb{R}^n$.
+    \end{enumerate}
+    \end{block}
+\end{frame}
+\begin{frame}{Principal Minors of a Matrix}
+    \begin{block}{Definition}
+    Let $A$ be an $n\times n$ matrix. A $k\times k$ submatrix of $A$ formed by deleting $n-k$ columns and the same $n-k$ rows from $A$ is called a $k$th order \textbf{principal submatrix} of $A$. The determinant of a $k\times k$ principal submatrix is called a $k$th order \textbf{principal minor} of $A$. 
+\end{block}
+\textbf{Example:} Suppose 
+\[
+A=\begin{pmatrix}
+   a_{11} & a_{12} & a_{13}\\
+   a_{21} & a_{22} & a_{23}\\
+   a_{31} & a_{32} & a_{33}
+\end{pmatrix}.
+\] Then $A$ has three first order principal minors, three second order principal minors, and one third order principal minor: $det(A)$.
+\end{frame}
+\begin{frame}{Principal Minors of a Matrix}
+    \begin{block}{Definition}
+    Let $A$ be an $n\times n$ matrix. A $k\times k$ submatrix of $A$ formed by deleting the \textit{last} $n-k$ columns and the \textit{last} $n-k$ rows from $A$ is called a $k$th order \textbf{leading principal submatrix} of $A$. The determinant of a $k\times k$ leading principal submatrix is called a $k$th order \textbf{leading principal minor} of $A$. 
+\end{block} 
+\textbf{Example:} For a $3\times 3 $ matrix $A$, the leading principal minors are:
+\begin{align*}
+    \begin{array}{ccc}
+      \begin{vmatrix}
+         a_{11}
+      \end{vmatrix},   &  \begin{vmatrix}
+         a_{11} & a_{12}\\
+         a_{21} & a_{22}
+      \end{vmatrix},
+         & \begin{vmatrix}
+            a_{11} & a_{12} & a_{13}\\
+   a_{21} & a_{22} & a_{23}\\
+   a_{31} & a_{32} & a_{33}
+         \end{vmatrix}
+    \end{array}
+\end{align*}
+\end{frame}
+\begin{frame}{Principal Minors of a Matrix}
+\begin{block}{Theorem}
+     Let $A$ be an $n\times n$ symmetric matrix. Then, 
+     \begin{enumerate}
+         \item $A$ is positive definite if and only if all its $n$ leading principal minors are (strictly) positive. 
+         \item $A$ is negative definite if and only if its $n$ leading principal minors alternate sign as follows:
+         \begin{align*}
+             \begin{array}{ccc}
+              \begin{vmatrix}
+                 A_{1}
+              \end{vmatrix} <0,   &  \begin{vmatrix}
+                 A_2
+              \end{vmatrix}>0,
+                  & \begin{vmatrix}
+                     A_3
+                  \end{vmatrix}>0
+             \end{array}
+         \end{align*}
+         The $k$th order leading principal minor should have the same sign as $(-1)^k$. 
+         \item If some $k$th order leading principal minor of $A$ is nonzero, but does not fit either of the above two sign patterns, then $A$ is indefinite. 
+     \end{enumerate}
+\end{block}
+\end{frame}
+\begin{frame}{Principal Minors of a Matrix}
+\begin{block}{Theorem}
+     Let $A$ be an $n\times n$ symmetric matrix. Then, $A$ is positive semidefinite if and only if every principal minor of $A$ is $\geq 0$; $A$ is negative semidefinite if and only if every principal minor of odd order is $\leq 0$ and every principal minor or even order is $\geq 0$.
+\end{block}
+\begin{itemize}
+    \item If $A$ is a diagonal matrix, then it will be positive definite if all $a_{ii}$'s are positive and negative definite if all $a_{ii}$'s are negative. If there are two $a_{ii}$'s of opposite sign, this matrix will be indefinite.
+    \item If $A$ is a positive definite matrix, then $A$ is nonsingular.
+\end{itemize}
+\end{frame}
+
+
+
+
+
+
+
+\begin{frame}{Summary}
+\begin{itemize}
+    \item Today, we started with basic introduction to logic, proof methods and matrix algebra. 
+    \item Tomorrow, we'll continue with chosen topics in calculus and functions and correspondences. 
+    \item Thank you for participation. 
+\end{itemize}
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
