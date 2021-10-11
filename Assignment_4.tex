@@ -1,0 +1,261 @@
+
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{graphicx,epsfig, wrapfig}
+\usepackage{amssymb}
+\usepackage{setspace}
+\usepackage{amsthm}
+\usepackage{subfig}
+\usepackage{amsmath}
+%\usepackage{chicago}
+\usepackage{natbib}
+\usepackage{enumerate}
+\usepackage{url}
+\usepackage{epstopdf}
+\usepackage{fancyhdr}
+\usepackage{threeparttable}
+\usepackage{caption}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{array}
+\usepackage{multirow}
+%\usepackage[T1]{fontenc}
+%\usepackage[utf8]{inputenc}
+%\usepackage{authblk}
+\newcommand{\keyword}[1]{\textsf{\slshape #1}}
+
+ 
+\setcounter{MaxMatrixCols}{10}    
+
+%\setstretch{3}
+\onehalfspacing
+%\setlength{\footnotesep}{0.5cm}
+%\doublespacing
+\newtheorem{theorem}{Theorem}   
+\newtheorem{acknowledgment}[theorem]{Acknowledgment}   
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case} 
+\newtheorem{claim}[theorem]{Claim} 
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{ques}[theorem]{Question}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary} 
+\setlength{\oddsidemargin}{0mm}
+\setlength{\textwidth}{6.5in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{0in}
+\setlength{\headsep}{0in}
+\setlength{\textheight}{9in}
+
+
+\newtheorem{prop}{Proposition}
+ 
+
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+
+\newcounter{saveenumi}
+\newcommand{\seti}{\setcounter{saveenumi}{\value{enumi}}}
+\newcommand{\conti}{\setcounter{enumi}{\value{saveenumi}}}
+
+\begin{document}
+
+
+\setcounter{footnote}{0}
+\title{Mathematics for Economics PhD: Assignment 4}
+\author{\textsc{Mariam Arzumanyan,}\thanks {   E-mail: mariama2@illinois.edu.} \\ } 
+
+
+\date{August 19, 2021}
+
+
+\maketitle 
+
+\begin{ques}
+Solve the following minimization problems:
+\begin{enumerate}
+    \item \[\min_{x,y} p_xx+p_yy\]
+    such that \[\alpha\ln x+(1-\alpha)\ln y\geq u.
+    \]
+    \item \[\min_{x,y} p_xx+p_yy\]
+    such that \[ x^\alpha y^{(1-\alpha)}\geq u.
+    \]
+    \item Do your answers in part 1 and 2 coincide? Explain.
+\end{enumerate}
+\end{ques}
+
+\newpage
+\begin{ques}
+Solve the following minimization problems:
+\begin{enumerate}
+    \item \[\min_{x,y} p_xx+p_yy\]
+    such that \[\sqrt{x}+\sqrt{y}\geq u.
+    \]
+    \[x\geq 0, y\geq 0.
+    \]
+    \item \[\min_{x,y} p_xx+p_yy\]
+    such that \[ x+b\ln y \geq u\]
+    for $(x,y)\in (-\infty, \infty)\times(0, \infty)$
+\end{enumerate}
+\end{ques}
+
+
+\newpage
+\begin{ques}
+Solve the following problem:
+\[\max_{x,y} min\{x-y, y-x\}
+\]
+such that \[p_xx+p_yy=w,
+\]\[x\geq 0, y\geq 0.
+    \]
+\end{ques}
+
+\newpage
+\begin{ques}
+Solve the following problem:
+\[\max_{x_1,x_2, x_3, x_4} x_1^a x_2^b
+\]
+such that \[x_3+2\ln x_4\geq u
+\]\[x_1+x_3=4, x_2+x_4=4.
+    \]
+\end{ques}
+
+\newpage
+\begin{ques}
+Solve the following problem:
+\[\max_{x_1,x_2, x_3, x_4} ax_1+ bx_2
+\]
+such that \[\max \{ 2x_3, x_4\}\geq u
+\]\[x_1+x_3=1,\]
+\[x_2+x_4=1.
+    \]
+\end{ques}
+\newpage
+\begin{ques}
+Solve the following problems:
+\[\max_{x_1,x_2, x_3, x_4} x_1^2+ x_2^2
+\]
+such that \[\min \{ x_3, x_4\}\geq u
+\]\[x_1+x_3=2,\]
+\[x_2+x_4=2.
+    \]
+And the next problem:
+\[\max_{x_1,x_2, x_3, x_4} \min \{ x_3, x_4\}
+\]
+such that \[x_1^2+ x_2^2\geq u
+\]\[x_1+x_3=2,\]
+\[x_2+x_4=2.
+    \]
+    Are the solutions of these two problems identical? Explain.
+\end{ques}
+
+\newpage
+\begin{ques}
+Solve the following problem:
+\[\max_{x_1,x_2, x_3, x_4} \sqrt{x_1}+\sqrt{ x_2}
+\]
+such that \[x_3+ x_4^2\geq u
+\]\[x_1+x_3=1, x_2+x_4=1.
+    \]
+\end{ques}
+
+\newpage
+\begin{ques}
+Find the general solution of the following system of difference equations:
+\begin{enumerate}
+    \item \begin{align*}
+        \begin{array}{c}
+             x_{n+1}=3x_n\\
+             y_{n+1}=x_n+2y_n;
+        \end{array}
+    \end{align*}
+    
+     \item \begin{align*}
+        \begin{array}{c}
+             x_{n+1}=y_n\\
+             y_{n+1}=-x_n+5y_n;
+        \end{array}
+    \end{align*}
+     \item \begin{align*}
+        \begin{array}{c}
+             x_{n+1}=x_n-y_n\\
+             y_{n+1}=2x_n+4y_n;
+        \end{array}
+    \end{align*}
+    
+     \item \begin{align*}
+        \begin{array}{c}
+             x_{n+1}=3x_n-y_n\\
+             y_{n+1}=-x_n+2y_n-z_n\\
+             z_{n+1}=-y_n+3z_n.
+        \end{array}
+    \end{align*}
+      \item \begin{align*}
+        \begin{array}{c}
+             x_{n+1}=4x_n-2y_n-2z_n\\
+             y_{n+1}=y_n\\
+             z_{n+1}=x_n+z_n.
+        \end{array}
+    \end{align*}
+\end{enumerate}
+\end{ques}
+
+\newpage
+\begin{ques}
+Find the general solution for the following equations:
+ \begin{enumerate}
+        \item $y'=ay,$ where $a$ is a constant.
+        \item $y'=ay+b$.
+        \item $y'=a(t)y$. 
+        \item $y'=a(t)y+b(t)$.
+        \item The general separable equation: $y'=a(y)h(t)$.
+        \item $y'=y^2$. 
+        \item $y'=y(a-by)$.
+    \end{enumerate}
+\end{ques}
+\newpage
+\begin{ques}
+Solve the following initial value problem:
+\begin{enumerate}
+    \item $y^{\prime \prime}-y=0$, $y(0)=y'(0)=1.$
+    \item $y^{\prime \prime}-5y'+6y=0$, $y(0)=3$, $y'(0)=7.$
+\end{enumerate}
+\end{ques}
+
+\newpage
+\begin{ques}
+Find the indefinite integral of each of the following functions:
+\begin{enumerate}
+    \item $4x^6-x^3$.
+    \item $12x^2-6x^{\frac{1}{2}}+3x^{-\frac{1}{2}}-x^{-1}$.
+    \item $6e^{7x}$.
+    \item $e^{3x^2+6x}(x+1)$.
+    \item $(x^2+2x+4)^{\frac{1}{2}}(x+1)$.
+    \item $$\frac{3x^{\frac{1}{2}}+x^{-\frac{1}{2}}}{x^{\frac{3}{2}}+x^{\frac{1}{2}}}$$
+\end{enumerate}
+\end{ques}
+\newpage
+\begin{ques}
+Use integration by parts to integrate:
+\begin{enumerate}
+    \item \[\int x \ln xdx,
+    \]
+    \item \[\int x^2 e^{2x} dx.
+    \]
+\end{enumerate}
+\end{ques}
+\end{document}
