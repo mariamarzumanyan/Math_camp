@@ -1,0 +1,508 @@
+\documentclass{beamer}
+
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+\usetheme{Boadilla}
+%\usetheme{boxes}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{default}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+%\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+\usepackage{epsfig}
+
+\usepackage{amssymb, graphicx, amsmath, amsthm}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{calc}
+
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+\setbeamercovered{highly dynamic}
+\newcounter{saveenumi}
+\newcommand{\seti}{\setcounter{saveenumi}{\value{enumi}}}
+\newcommand{\conti}{\setcounter{enumi}{\value{saveenumi}}}
+
+\title{\textsc{Mathematics for Economics PhD}}
+
+
+\subtitle{Lecture 4} 
+\author{Instructor:  Mariam Arzumanyan}
+
+
+\date[UIUC, Fall 2021]{University of Illinois at Urbana-Champaign \\August 19, 2021 }
+
+
+\subject{Lecture Session}
+
+\AtBeginSubsection[]
+{
+  \begin{frame}<beamer>{Outline}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+\pgfdeclareimage[height=0.7cm]{Illinilogo}{Illinilogo.png}
+\logo{\pgfuseimage{Illinilogo}} 
+% Let's get started
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
+\setbeamercovered{invisible}
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\begin{frame}{Class Information}
+\begin{itemize}
+  
+    \item \textbf{Phone:} **
+    \item \textbf{Email:} mariama2@illinois.edu
+\item \textbf{Office Hours:}  1:30 - 2:30 pm  by appointment
+\item \textbf{Zoom: }**
+\item \textbf{During Class:} Please have your Video on and Sound muted. 
+
+\end{itemize}
+
+\end{frame}
+\begin{frame}{References}
+	\begin{itemize}
+
+\item	\textbf{Simon, Blume, Mathematics for Economists \textit{W.W.Norton, 1994}}
+\item	Mas-Colell, Whinston, Green, Microeconomic Theory: Mathematical Appendix \textit{Oxford University Press,  1995 }
+\item		Sydsater, Hammond, Seierstad, and Strom, (2008). Further mathematics for economic analysis. Pearson education. Financial Times/Prentice Hall, second edition.
+\item		Stokey, Lucas, Prescott, (1989). Recursive Methods in Economics Dynamic, Harvard University Press.
+
+ \end{itemize}   
+\end{frame}
+
+\section{Minimization Problems}
+\begin{frame}{Constrained Minimization Problem}
+    \begin{block}{Theorem}
+         Suppose that $f, g_1,..., g_k, h_1,...,h_m$ are $C^1$ functions on $n$ variables. Suppose that $x^*\in \mathbb{R}^n$ is a local \textbf{minimizer} of $f$ on the constraint set defined by $k$ inequalities and $m$ equalities. 
+    \[g_1(x_1,..., x_n)\geq b_1,..., g_k(x_1,..., x_n)\geq b_k.
+    \]
+    \[h_1(x_1,..., x_n)=c_1,..., h_m(x_1,..., x_n)=c_m.
+    \]
+    Assume that the first $k_0$ inequality constraints are binding at $x^*$ and the last $k-k_0$ constraints are not binding.
+     \end{block}
+\end{frame}
+    \begin{frame}{Constrained Minimization Problem}
+    \begin{block}{Theorem}Suppose that the following nondegenerate constraint qualification is satisfied at $x^*$. 
+    The rank at $x^*$ of the $Jacobian $ matrix of the binding constraint 
+    \begin{align*}
+        \begin{pmatrix}
+            \frac{\partial g_1}{\partial x_1}(x^*) & \cdots & \frac{\partial g_1}{\partial x_n}(x^*)\\ 
+            \vdots & \ddots &\vdots \\
+            \frac{\partial g_{k_0}}{\partial x_1}(x^*) & \cdots & \frac{\partial g_{k_0}}{\partial x_n}(x^*)\\
+              \frac{\partial h_1}{\partial x_1}(x^*) & \cdots & \frac{\partial h_1}{\partial x_n}(x^*)\\ 
+            \vdots & \ddots &\vdots \\
+            \frac{\partial h_{m}}{\partial x_1}(x^*) & \cdots & \frac{\partial h_{m}}{\partial x_n}(x^*)
+        \end{pmatrix}
+    \end{align*}
+    is $k_0+m$- as large as it can be. 
+    \end{block}
+\end{frame}
+\begin{frame}{Minimization Problem}
+ \begin{block}{Theorem}
+   Form the Lagrangian
+   \[L(x_1,x_2,..., x_n,\lambda_1,..., \lambda_k)= f(x)-\lambda_1 [g_1(x)-b_1]-\cdots\]
+   \[ -\lambda_k[g_k(x)-b_k]-\mu_1[h_1(x)-c_1]-...-\mu_m [h_m(x)-c_m]. 
+    \]
+    Then, there exist multipliers $\lambda_1^*,...,\lambda_k^*, \mu_1^*,..., \mu_m^* $ such that:
+    \begin{enumerate}
+        \item $\frac{\partial L}{\partial x_1}(x^*,  \lambda^*)=0,...,\frac{\partial L}{\partial x_n}(x^*,  \lambda^*)=0$, 
+        \item $\lambda_1^*[g_1(x^*)-b_1]=0$, ..., $\lambda_k^*[g_k(x^*)-b_k]=0$,
+        \item $h_1(x^*)=c_1$,..., $h_m(x^*)=c_m$.
+        \item $\lambda_1^*\geq 0,..., \lambda_k^*\geq 0$,
+        \item $g_1(x^*)\geq b_1,..., g_k(x^*)\geq b_k$.
+    \end{enumerate}
+    \end{block}
+\end{frame}
+\section{Concave Programming}
+\begin{frame}{Unconstrained Problems}
+    \begin{block}{Theorem}
+        Let $U$ be a convex subset of $\mathbb{R}^n$. Let $f:U\to \mathbb{R}$ be a $C^1$ concave (convex) function on $U$. Then, $x^*$ is a global max of $f$ on $U$ if and only if $Df(x^*)(x-x^*)\leq 0$ for all $x\in U$. In particular, if $U$ is open, or if $x^*$ is an interior point of $U$, then $x^*$ is global max (min) of $f$ on $U$ if and only if $Df(x^*)=0$.
+    \end{block}
+\end{frame}
+
+\begin{frame}{Constrained Problems}
+    \begin{block}{Theorem}
+        Let $U$ be a convex subset of $\mathbb{R}^n$. Let $f:U\to \mathbb{R}$ be a $C^1$ quasiconcave  function with nonvanishing gradient on $U$. Let $g_1,..., g_k:U\to \mathbb{R}$ be $C^1$ quasiconvex functions. Consider maximizing $f(x)$ on 
+          \[g_1(x_1,..., x_n)\leq b_1,..., g_k(x_1,..., x_n)\leq b_k.
+    \]
+    Suppose NDCQ satisfies. Form the Lagrangian
+   \[L(x_1,x_2,..., x_n,\lambda_1,..., \lambda_k)= f(x)-\lambda_1 [g_1(x)-b_1]-\cdots-\lambda_k[g_k(x)-b_k]\]
+    If there exist $x^*$ and multipliers $\lambda_1^*,...,\lambda_k^*$ such that:
+    \begin{enumerate}
+        \item $\frac{\partial L}{\partial x_1}(x^*,  \lambda^*)=0,...,\frac{\partial L}{\partial x_n}(x^*,  \lambda^*)=0$, 
+        \item $\lambda_1^*[g_1(x^*)-b_1]=0$, ..., $\lambda_k^*[g_k(x^*)-b_k]=0$,
+        
+        \item $\lambda_1^*\geq 0,..., \lambda_k^*\geq 0$, $g_1(x^*)\leq b_1,..., g_k(x^*)\leq b_k$.
+    \end{enumerate}
+    Then, $x^*$ is a global max of $f$ on the constraint set.
+    \end{block}
+\end{frame}
+
+
+
+\section{Dynamic Programming }
+\begin{frame}{Typical Problem }
+    \begin{itemize}
+        \item Consider the problem of optimal growth (Cass-Koopmans Model). 
+        \item Utility is maximized for the representative agent, given the technology they are faced with. 
+        \item The objective is to maximize the present discounted value of future utility:
+        \[\sum_{t=0}^\infty \beta^t U(c_t).
+        \]
+        \item Consider the technology:
+        \[y_t=f(k_t).
+        \]
+        \item The law of motion for the capital stock is:
+        \[k_{t+1}=k_t(1-\delta)+i_t.
+        \]
+    \end{itemize}
+        
+\end{frame}
+
+
+\begin{frame}{Typical Problem }
+\begin{itemize}
+    \item We will assume ther is $100\%$ depreciation: $\delta=1$.
+    \item Investment and consumption must both come from current production, so the resource constraint for the agent is: 
+    \[c_t+i_t=f(k_t), 
+    \]
+    \item Combing it with the law of motion, we will be using as our budget constraint the following:
+    \[c_t+k_{t+1}=f(k_t).
+    \]
+\end{itemize}
+\end{frame}
+\begin{frame}{The Social Planner Problem}
+    The social planner problem may be written:
+    \[\max_{\{c_t, k_{t+1}\}_{t=0}^\infty} \sum_{t=0}^\infty \beta^t U(c_t)
+    \]
+    such that 
+     \[c_t+k_{t+1}=f(k_t),
+    \]
+    and $k_0$ given.
+    \par We will characterize the solution by a function called a policy rule, which tells what the optimal choice is as a function of the current state of the economy. In this case we will find a rule for choosing $c_t$ and $k_{t+1}$ as a function of $k_t$, which applies in each and every period. 
+\end{frame}
+
+
+
+\section{A Deterministic Finite Horizon Problem}
+\begin{frame}{A Deterministic Finite Horizon Problem}
+    \begin{itemize}
+        \item Assume representative agent/social planner has limited time, with terminal period $T$. 
+        \item We will consider using as a solution for the infinite problem the solution we find for the finite horizon problem, when we take a limiting case as $T\to \infty$.
+        \item The problem may now be written:
+        \[\max_{\{ k_{t+1}\}_{t=0}^\infty} \sum_{t=0}^\infty \beta^t U\left(f(k_t)-k_{t+1}\right)
+    \]
+        
+    \end{itemize}
+\end{frame}
+\begin{frame}{First Order Conditions}
+    \begin{itemize}
+       
+        \item The problem is:
+        \[\max_{\{ k_{t+1}\}_{t=0}^\infty} \sum_{t=0}^\infty \beta^t U\left(f(k_t)-k_{t+1}\right)
+    \]
+    \item Look at a section of the sum, which pertains to a generic period: 
+    \[... +  \beta^t U\left(f(k_t)-k_{t+1}\right)+ \beta^{t+1} U\left(f(k_{t+1})-k_{t+2}\right)+...
+    \]
+        \item This includes all the appearances for $k_{t+1}$. Take a derivative with respect to $k_{t+1}$:
+        \[ - \beta^t U'\left(f(k_t)-k_{t+1}\right)+ \beta^{t+1} U'\left(f(k_{t+1})-k_{t+2}\right)f'(k_{t+1})=0 \text{ for } t<T, 
+        \]
+        and $k_{T+1}=0$.
+    \end{itemize}
+\end{frame}
+\begin{frame}{First Order Conditions}
+    \begin{itemize}
+       
+        \item The problem is:
+        \[\max_{\{ k_{t+1}\}_{t=0}^\infty} \sum_{t=0}^\infty \beta^t U\left(f(k_t)-k_{t+1}\right)
+    \]
+ 
+        \item  Take a derivative with respect to $k_{t+1}$:
+        \[ - \beta^t U'\left(f(k_t)-k_{t+1}\right)+ \beta^{t+1} U'\left(f(k_{t+1})-k_{t+2}\right)f'(k_{t+1})=0 \text{ for } t<T, 
+        \]
+        rewriting:
+        \[  U'\left(f(k_t)-k_{t+1}\right)= \beta U'\left(f(k_{t+1})-k_{t+2}\right)f'(k_{t+1})=0 \text{ for } t<T, 
+        \]
+         and $k_{T+1}=0$.
+    \end{itemize}
+\end{frame}
+\begin{frame}{A Special Case}
+Consider a log utility:
+\[U(c_t)=\ln c_t. 
+\]
+A Cobb-Douglas production function:
+\[f(k_t)=k_t^\alpha.
+\]
+The first order condition becomes:
+\[\frac{1}{k_t^\alpha-k_{t+1}}=\beta \left(\frac{1}{k_{t+1}^\alpha-k_{t+2} } \right) \alpha k_{t+1}^{\alpha-1}.
+\]
+    
+\end{frame}
+\begin{frame}{A Special Case}
+\begin{itemize}
+    \item The first order condition becomes:
+\[\frac{1}{k_t^\alpha-k_{t+1}}=\beta \left(\frac{1}{k_{t+1}^\alpha-k_{t+2} } \right) \alpha k_{t+1}^{\alpha-1}.
+\]
+   \item This is a second-order difference equation which is difficult to solve. 
+   \item We need to make it into a first-order difference equation by using a change in variable:
+   \[z_t=\text{savings rate at time }t=\frac{k_{t+1}}{k_t^\alpha}.
+   \]
+   \item The first order condition can be written:
+   \[\frac{z_t}{1-z_t}=\alpha \beta \frac{1}{1-z_{t+1}}\Rightarrow z_{t+1}=1+\alpha\beta -\frac{\alpha\beta}{z_t}.
+   \]
+   
+\end{itemize}
+    
+\end{frame}
+\begin{frame}{Solving Recursively}
+
+The first order condition can be written:
+   \[ z_{t+1}=1+\alpha\beta -\frac{\alpha\beta}{z_t}.
+   \]
+Start at the boundary point: $z_T=0$. Now solve for $z_{T-1}$:
+\[z_{T}=0=1+\alpha\beta -\frac{\alpha\beta}{z_{T-1}}\Rightarrow z_{T-1}=\frac{\alpha\beta}{1+\alpha \beta}.
+\]
+Now plug this back into the first order condition for the previous period:
+\[ z_{T-1}=\frac{\alpha\beta}{1+\alpha \beta}=1+\alpha\beta -\frac{\alpha\beta}{z_{T-2}}
+\]
+which implies:
+\[z_{T-2}=\frac{\alpha\beta(1+\alpha\beta)}{1+\alpha \beta(1+\alpha\beta)}.
+\]\end{frame}
+\begin{frame}{Solving Recursively}
+
+The first order condition can be written:
+   \[ z_{t+1}=1+\alpha\beta -\frac{\alpha\beta}{z_t}.
+   \]
+   
+  If we keep moving backwards:
+  \[z_t=\frac{\sum_{s=1}^{T-t}(\alpha\beta)^s}{1+\sum_{s=1}^{T-t}(\alpha\beta)^s}.
+  \]
+  If we take the limit:
+   \[\lim_{T\to \infty}z_t=\lim_{T\to \infty}\frac{\sum_{s=1}^{T-t}(\alpha\beta)^s}{1+\sum_{s=1}^{T-t}(\alpha\beta)^s}=\alpha\beta
+  \]
+\end{frame}
+
+
+\section{A Deterministic Infinite Horizon Problem}
+\begin{frame}{Infinite Horizon Problem}
+    Let's consider the infinite horizon problem:
+     \[\max_{\{c_t, k_{t+1}\}_{t=0}^\infty} \sum_{t=0}^\infty \beta^t U(c_t)
+    \]
+    such that 
+     \[c_t+k_{t+1}=f(k_t), \text{ and }k_0 \text{ given.}
+    \]
+In  general, we can't just find the solution to the infinite horizon problem by taking the limit of the finite-horizon solution as $T\to \infty$.    
+    \[\max \lim_{T\to \infty} \sum_{t=0}^T  U(c_t) \neq  \lim_{T\to \infty}\max  \sum_{t=0}^T  U(c_t).
+    \]
+\end{frame}
+\begin{frame}{Value Function}
+    Define a function $v(k_0)$, called the \textbf{value function}:
+    \[ v(k_0)=\max_{\{c_t, k_{t+1}\}_{t=0}^\infty} \sum_{t=0}^\infty \beta^t U(c_t).
+    \]
+    Then $v(k_1)$ is the value of utility that can be obtained with a beginning level of capital in period $t=1$ of $k_1$. 
+    \[v(k_1)=\max_{\{c_t, k_{t+1}\}_{t=1}^\infty} \sum_{t=1}^\infty \beta^t U(c_t).
+    \]
+    The same way we can define $v(k_2)$, $v(k_3)$, and so on. 
+\end{frame}
+\begin{frame}{Recursive Formulation}
+    The social planner problem becomes:
+    \[ v(k_0)=\max_{\{c_t, k_{t+1}\}_{t=0}^\infty} \sum_{t=0}^\infty \beta^t U(c_t)
+    \]
+    \[= \max_{c_0, k_1}[U(c_0)+\beta v(k_1)]
+    \]
+    such that 
+    \[c_0+k_1=f(k_0).
+    \]
+    Rewrite with constraint substituted into objective function:
+    \[v(k_0)=\max \left[ U(f(k_0)-k_1)+\beta v(k_1)\right].
+    \]
+    This is called \textbf{Bellman's equation}.
+    \end{frame}
+\begin{frame}{Recursive Formulation}
+ \[v(k_0)=\max_{k_1} \left[ U(f(k_0)-k_1)+\beta v(k_1)\right].
+    \]
+ \begin{itemize}
+     \item  This is called \textbf{Bellman's equation}. We can regard this as an equation where the argument is the function $v$, a "functional equation".
+     \item $k_0$ is called a \textbf{state variable}.  State variables are a complete description of the current position of the system. 
+     \item $k_1$ is called a \textbf{control variable}. Control variables are the variables that must be chosen in the current period. 
+     \item If consumption $c_0$ had not been substituted out in the equation above, it too would be a control variable. 
+ \end{itemize}  
+    \end{frame}
+\begin{frame}{Recursive Formulation}
+ \[v(k_0)=\max_{k_1} \left[ U(f(k_0)-k_1)+\beta v(k_1)\right].
+    \]
+    The first order conditions for the equation above is:
+    \[U'[f(k_0)-k_1]=\beta v'(k_1). 
+    \]
+    This equates the marginal utility of consuming current output to the marginal utility of allocating it to capital and enjoying augmented consumption next period.
+\end{frame}
+
+\begin{frame}{Envelope Theorem}
+    We would like to get rid of the term $v'$ in the necessary condition. Assume a solution for the problem exists, and it is just a function of the state variable:
+    \[k_1=g(k_0).
+    \]
+    So \[v(k_0)=\max_{k_1} \left[ U(f(k_0)-k_1)+\beta v(k_1)\right].
+    \]
+    becomes 
+     \[v(k_0)= U(f(k_0)-g(k_0))+\beta v(g(k_0)).
+    \]
+    \end{frame}
+
+\begin{frame}{Envelope Theorem}
+Totally differentiate (everything is a function of $k_0$):
+\[v^\prime (k_0)=U^\prime(f(k_0)-g(k_0))[f^\prime(k_0)-g^\prime(k_0)]+\beta v^\prime (g(k_0))g^\prime(k_0).
+\]
+Rewriting
+\[v^\prime (k_0)=U^\prime(f(k_0)-g(k_0))f^\prime(k_0)-\left[U^\prime(f(k_0)-g(k_0))+\beta v^\prime (g(k_0))\right]g^\prime(k_0).
+\]
+The FOC says the second term equals zero, so
+\[v^\prime (k_0)=U^\prime(f(k_0)-g(k_0))f^\prime(k_0).
+\]
+\[v^\prime (k_0)=U^\prime(f(k_0)-k_1)f^\prime(k_0).
+\]
+   \end{frame}
+
+\begin{frame}{Envelope Theorem}
+
+\[v^\prime (k_0)=U^\prime(f(k_0)-k_1)f^\prime(k_0).
+\]
+Update one period 
+\[v^\prime (k_1)=U^\prime(f(k_1)-k_2)f^\prime(k_1).
+\]
+Or in a more compact way the \textbf{envelope condition} here is:
+\[v^\prime (k_{t})=U^\prime(f(k_{t})-k_{t+1})f^\prime(k_{t}).
+\]
+We can use this to get rid of term in FOC:
+\[U^\prime(f(k_0)-k_1)=\beta U^\prime(f(k_1)-k_2)f^\prime(k_1).
+\]
+
+\end{frame}
+\begin{frame}{Special Case}
+    Assume $f(k_t)=k_t^\alpha$ and $u(c_t)=\ln c_t$. Let's solve by a Lagrangian instead of substituting the constraint into the objective function.
+    The problem is stated:
+    \[v(k_t)=\max_{c_t, k_{t+1}} \left[ \ln c_t+\beta v(k_{t+1})\right]
+    \]
+    such that 
+    \[c_t+k_{t+1}=k_t^\alpha.
+    \]
+    In Bellman Form:
+    \[v(k_t)=\max_{c_t, k_{t+1}} \left[ \ln c_t+\beta v(k_{t+1})\right]+\lambda_t(k_t^\alpha-c_t-k_{t+1})
+    \]
+
+\end{frame}
+\begin{frame}{Special Case}
+ \[v(k_t)=\max_{c_t, k_{t+1}} \left[ \ln c_t+\beta v(k_{t+1})\right]+\lambda_t(k_t^\alpha-c_t-k_{t+1})
+    \]
+    Differentiate to derive the first order conditions:
+    \[\frac{1}{c_t}-\lambda_t=0,
+    \]
+    \[\beta v^\prime (k_{t+1})-\lambda_t=0,
+    \]
+    or combining them:
+     \[\frac{1}{c_t}=\beta v^\prime (k_{t+1}).
+    \]
+    Using Envelope theorem:
+    \[v^\prime (k_{t+1})=U_{t+1}^\prime f^\prime (k_{t+1})=\alpha \frac{1}{c_{t+1}}k_{t+1}^{\alpha-1} 
+    \]
+    \end{frame}
+\begin{frame}{Special Case}
+ \[\frac{1}{c_t}=\beta v^\prime (k_{t+1}).
+    \]
+     \[v^\prime (k_{t+1})=U_{t+1}^\prime f^\prime (k_{t+1})=\alpha \frac{1}{c_{t+1}}k_{t+1}^{\alpha-1} .
+    \]
+    Substitute envelope condition into FOC:
+     \[\frac{1}{c_t}=\beta \alpha \frac{1}{c_{t+1}}k_{t+1}^{\alpha-1} .
+    \]
+    So the necessary equations for this problem are the equation above and the budget constraint:
+    \[c_t+k_{t+1}=k_t^\alpha.
+    \]
+\end{frame}
+\begin{frame}{Solution by Iterative Substitution}
+    In this special case we can solve explicitly for a solution. Rewrite the FOC and budget constraint:
+    \[\frac{k_{t+1}}{c_t}=\alpha \beta \frac{k_{t+1}^\alpha}{c_{t+1}}.
+    \]
+    \[\frac{k_{t}^\alpha}{c_t}-1=\frac{k_{t+1}}{c_t}.
+    \]
+    Substitute FOC into the constraint:
+  \[\alpha \beta \frac{k_{t+1}^\alpha}{c_{t+1}}=
+    \frac{k_{t}^\alpha}{c_t}-1\Rightarrow \frac{k_{t}^\alpha}{c_t}=1+\alpha \beta \frac{k_{t+1}^\alpha}{c_{t+1}}
+    \]
+    Update one period the consolidated condition above and substitute it into itself:
+    \[\frac{k_{t}^\alpha}{c_t}=1+\alpha \beta (1+\alpha \beta \frac{k_{t+2}^\alpha}{c_{t+2}})
+    \]
+    \end{frame}
+\begin{frame}{Solution by Iterative Substitution}
+ \[\frac{k_{t}^\alpha}{c_t}=1+\alpha \beta (1+\alpha \beta \frac{k_{t+2}^\alpha}{c_{t+2}})
+    \]
+Do this recursively. Note that it is a geometric progression:
+ \[\frac{k_{t}^\alpha}{c_t}=1+\alpha \beta +(\alpha \beta)^2+(\alpha \beta)^3+... =\frac{1}{1-\alpha \beta }.
+    \]
+    So the policy function is:
+    \[c_t=(1-\alpha \beta )k_t^\alpha.
+    \]
+    Note that this is the answer we guessed earlier, based on the finite horizon problem. 
+\end{frame}
+\begin{frame}{Other Solution Methods: Solution by Conjecture}
+   Suppose we suspect because of the form of the utility function that the amount that the household saves should be a constant fraction of their income, but we don't know what this fraction is:
+   \[k_{t+1}=\theta k_t^\alpha.
+   \]
+   or equivalently
+   \[c_t=(1-\theta)k_t^\alpha.
+   \]
+   Divide the two equations above:
+   \[\frac{k_{t+1}}{c_t}=\frac{\theta}{1-\theta}
+   \]
+   and substitute into FOC:
+   \[\frac{k_{t+1}}{c_t}=\alpha \beta \frac{k_{t+1}^\alpha}{c_{t+1}}
+   \]
+   \[\alpha \beta \frac{k_{t+1}^\alpha}{c_{t+1}}=\frac{\theta}{1-\theta}
+   \]\end{frame}
+\begin{frame}{Solution by Conjecture}
+   Substituting the consumption function for $c_{t+1}$:
+    \[\alpha \beta \frac{k_{t+1}^\alpha}{(1-\theta)k_{t+1}^\alpha}=\frac{\theta}{1-\theta}
+   \]
+   so 
+   \[\alpha \beta =\theta.
+   \]
+   We reach the same solution as before:
+   \[c_t=(1-\alpha)k_t^\alpha.
+   \]
+\end{frame}
+\end{document}
